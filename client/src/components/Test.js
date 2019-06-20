@@ -1,8 +1,12 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 const Test = () => {
     return (
-        <h1>Test page</h1>
+        <div>
+            <h1>Test page</h1>
+            <Link to="/">Home</Link>
+        </div>
     )
 }
 
