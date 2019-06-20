@@ -1,31 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends React.Component {
+  state = {
+    apiGreeting: null
+  }
   
   componentDidMount = async () => {
     const serverHandshake = await fetch('/api/test') 
     const json = await serverHandshake.json()
-    console.log(json);
+    this.setState({
+      apiGreeting: json.greeting
+    })
   }
 
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Test.
+            {this.state.apiGreeting}
           </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
         </header>
       </div>
     );
