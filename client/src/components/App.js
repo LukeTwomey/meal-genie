@@ -1,4 +1,7 @@
 import React from 'react';
+import { BrowserRouter, Route} from 'react-router-dom';
+import Landing from './Landing';
+import Test from './Test';
 import './App.css';
 
 class App extends React.Component {
@@ -16,13 +19,13 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <p>
-            {this.state.apiGreeting}
-          </p>
-        </header>
-      </div>
+      <BrowserRouter>
+        <div>
+          {this.state.apiGreeting}
+            <Route path="/" exact component={Landing} />
+            <Route path="/test" exact component={Test} />
+        </div>
+      </BrowserRouter>
     );
   }
 }
