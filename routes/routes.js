@@ -1,5 +1,7 @@
 module.exports = (app) => {
-    app.get('/api', (req, res) => {
-        res.send("Hi from the API");
+    app.get('/api/test', (req, res) => {
+        res.json({
+            greeting: 'Hi from the API'
+        });
     })
 }
