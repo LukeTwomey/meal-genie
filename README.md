@@ -30,6 +30,24 @@ To run the app in development
 $ npm run dev
 ```
 
+### Connecting a development database
+
+Create a new project and cluster on [mongodb.com](https://cloud.mongodb.com/v2#/org/5d010935014b764d90359b5a/projects/create)
+
+Open config/dev.js and replace \<dev-database-uri> with the uri to connect to the newly created dev database, E.G.:
+
+```sh
+$ mongoURI: 'mongodb+srv://username:password@cluster0-3h4tl.mongodb.net/test?retryWrites=true&w=majority'
+```
+
+If the connection is set up correctly, on starting the app a test document like the following should have been added to the database:
+
+```
+_id: ObjectId("5d0cf038837aca26837fbab4")
+name: "luke"
+__v: 0
+```
+
 ### Deploying to production
 
 Navigate to your web host (in this case Heroku) and create a new app.
