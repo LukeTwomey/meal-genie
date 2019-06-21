@@ -1,5 +1,11 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const app = express();
+const keys = require('./config/keys');
+require('./models/Test');
+require('./services/mongodb');
+
+mongoose.connect(keys.mongoURI);
 
 require('./routes/routes')(app);
 
