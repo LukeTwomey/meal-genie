@@ -32,12 +32,14 @@ $ npm run dev
 
 ### Connecting a development database
 
-Create a new project and cluster on [mongodb.com](https://cloud.mongodb.com/v2#/org/5d010935014b764d90359b5a/projects/create)
+Create a new project, cluster and database on [mongodb.com](https://cloud.mongodb.com/v2#/org/5d010935014b764d90359b5a/projects/create)
 
-Open config/dev.js and replace \<dev-database-uri> with the uri to connect to the newly created dev database, E.G.:
+Create a config/dev.js file using the contents of config/dev.js.example. Add the uri for the database you just created.
 
 ```sh
-$ mongoURI: 'mongodb+srv://username:password@cluster0-3h4tl.mongodb.net/test?retryWrites=true&w=majority'
+module.exports = {
+    mongoURI: 'mongodb+srv://username:password@cluster0-3h4tl.mongodb.net/test?retryWrites=true&w=majority'
+}
 ```
 
 If the connection is set up correctly, on starting the app a test document like the following should have been added to the database:
