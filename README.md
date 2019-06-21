@@ -4,7 +4,7 @@ react-node-boilerplate allows you to easily create a new project from scratch wi
 
 ### Installation
 
-Run the following inside your projects directory to clone the boilerplate, replacing <project-name> with the name of your project E.G. todo-list or music-player
+Run the following inside your projects directory to clone the boilerplate, replacing \<project-name> with the name of your project E.G. todo-list or music-player
 
 ```sh
 $ git clone https://github.com/LukeTwomey/react-node-boilerplate <project-name>
@@ -33,7 +33,7 @@ $ npm run dev
 ### Deploying to production
 
 Navigate to your web host (in this case Heroku) and create a new app.
-Run the following, replacing <project-name> with the name of your app E.G. todo-list or music-player
+Run the following, replacing \<project-name> with the name of your app E.G. todo-list or music-player
 
 ```sh
 $ heroku git:remote -a <project-name>
