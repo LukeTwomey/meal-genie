@@ -9,8 +9,7 @@ const recipeSchema = new Schema({
     description: String,
     syns: Number,
     ingredients: Array,
-    method: Array,
-    nutrition: Array
+    method: Array
 })
 
 mongoose.model('recipe', recipeSchema);

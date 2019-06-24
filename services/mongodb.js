@@ -31,13 +31,7 @@ async function saveRecipe(){
             "Mix together the egg, quark and cheese if you're using it. Pour into the pasta and quickly begin to mix this into the pasta making sure to coat it all. Continue to mix until the sauce thickens, this is how you know the egg has cooked.",
             'Portion out the pasta and top with a small spoon of quark and a sprinkling of Cajun seasoning.',
             'Enjoy straight away!'
-        ],
-        nutrition: {
-            'Calories': '452',
-            'Fat': '9g',
-            'Carbs': '77g',
-            'Protein': '16g'
-        }
+        ]
     }).save()
     console.log(recipe);
 }
