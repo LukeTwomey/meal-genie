@@ -10,6 +10,7 @@ mongoose.connect(keys.mongoURI);
 require('./routes/routes')(app);
 
 if (process.env.NODE_ENV === 'production') {
+    console.log("In production");
     app.use(express.static('client/build'));
     
     const path = require('path');
