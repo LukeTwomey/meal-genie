@@ -1,11 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const app = express();
+const bodyParser = require('body-parser');
 const keys = require('./config/keys');
 require('./models/Recipe');
-require('./services/mongodb');
 
 mongoose.connect(keys.mongoURI);
+
+const app = express();
+
+app.use(bodyParser.json());
 
 require('./routes/routes')(app);
 
