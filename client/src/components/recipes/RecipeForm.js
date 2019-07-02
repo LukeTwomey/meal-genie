@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import formFields from './formFields';
+import IngredientInputs from "./IngredientInputs"
+import MethodInputs from "./MethodInputs"
 import './RecipeForm.css'
 
 export default class RecipeForm extends Component {
@@ -11,26 +13,35 @@ export default class RecipeForm extends Component {
         servings: '',
         description: '',
         syns: '',
-        ingredients: ['meat'],
-        method: ['cook it']
+        ingredients: [{ingredient: '', quantity: ''}],
+        method: [{step: ''}]
     }
 
-    handleInputChange = event => {
-        const target = event.target;
-        const value = target.value;
-        const name = target.name;
-
-        this.setState({ [name]: value });
+    handleChange = e => {
+        if (["ingredient", "quantity"].includes(e.target.className)) {
+            let ingredients = [...this.state.ingredients]   
+            ingredients[e.target.dataset.id][e.target.className] = e.target.value
+            this.setState({ ingredients })
+        } else if (["step"].includes(e.target.className)) {
+            let method = [...this.state.method]   
+            method[e.target.dataset.id][e.target.className] = e.target.value
+            this.setState({ method })
+        } else {
+            const target = e.target;
+            const value = target.value;
+            const name = target.name;
+            this.setState({ [name]: value });
+        }
     }
 
-    handleSubmit = async event => {
-        event.preventDefault();
+    handleSubmit = async e => {
+        e.preventDefault();
         const { name, rating, cookingTime, servings, description, syns, ingredients, method } = this.state;
         const res = await axios.post('/api/recipes', { name, rating, cookingTime, servings, description, syns, ingredients, method });
         console.log(res.data);
     }
 
-    renderFields = () => {
+    renderStaticFields = () => {
         return formFields.map(({ name, label, type }) => {
             return (
                 <label key={name}>
@@ -39,17 +50,37 @@ export default class RecipeForm extends Component {
                         name={name}
                         type={type}
                         value={this.state[name]}
-                        onChange={this.handleInputChange} />
+                        onChange={this.handleChange} />
                 </label>
             );
         });
     }
 
+    addIngredient = (e) => {
+        e.preventDefault();
+        this.setState((prevState) => ({
+          ingredients: [...prevState.ingredients, {ingredient:'', quantity:''}]
+        }));
+    }
+
+    addStep = (e) => {
+        e.preventDefault();
+        this.setState((prevState) => ({
+          method: [...prevState.method, {step:''}]
+        }));
+    }
+
     render() {
+        const {ingredients, method} = this.state
+
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    {this.renderFields()}
+                    {this.renderStaticFields()}
+                    <button onClick={this.addIngredient}>Add new ingredient</button>
+                    <IngredientInputs ingredients={ingredients} onChange={this.handleChange}/>
+                    <button onClick={this.addStep}>Add step</button>
+                    <MethodInputs method={method} onChange={this.handleChange}/>
                     <input type="submit" value="Submit" />
                 </form>
             </div>

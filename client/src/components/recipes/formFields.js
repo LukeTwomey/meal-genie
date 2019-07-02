@@ -4,7 +4,5 @@ export default [
     { label: 'Cooking Time', name: 'cookingTime', type: 'number' },
     { label: 'Servings', name: 'servings', type: 'number' },
     { label: 'Description', name: 'description', type: 'text' },
-    { label: 'Syns', name: 'syns', type: 'number' }//,
-    // { label: 'Ingredients', name: 'ingredients' },
-    // { label: 'Method', name: 'method' }
+    { label: 'Syns', name: 'syns', type: 'number' }
   ];
