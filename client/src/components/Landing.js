@@ -5,7 +5,7 @@ const Landing = () => {
     return (
         <div>
             <h1>Landing page</h1>
-            <Link to="/test">Test</Link>
+            <Link to="/recipes/new">Add new recipe</Link>
         </div>
     )
 }
