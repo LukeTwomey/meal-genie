@@ -13,12 +13,12 @@ export default class RecipeForm extends Component {
         servings: '',
         description: '',
         syns: '',
-        ingredients: [{ingredient: '', quantity: ''}],
+        ingredients: [{ingredient: '', quantity: '', unit: ''}],
         method: [{step: ''}]
     }
 
     handleChange = e => {
-        if (["ingredient", "quantity"].includes(e.target.className)) {
+        if (["ingredient", "quantity", "unit"].includes(e.target.className)) {
             let ingredients = [...this.state.ingredients]   
             ingredients[e.target.dataset.id][e.target.className] = e.target.value
             this.setState({ ingredients })
@@ -59,7 +59,7 @@ export default class RecipeForm extends Component {
     addIngredient = (e) => {
         e.preventDefault();
         this.setState((prevState) => ({
-          ingredients: [...prevState.ingredients, {ingredient:'', quantity:''}]
+          ingredients: [...prevState.ingredients, {ingredient:'', quantity:'', unit:''}]
         }));
     }
 
