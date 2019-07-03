@@ -39,6 +39,9 @@ export default class RecipeForm extends Component {
         const { name, rating, cookingTime, servings, description, syns, ingredients, method } = this.state;
         const res = await axios.post('/api/recipes', { name, rating, cookingTime, servings, description, syns, ingredients, method });
         console.log(res.data);
+
+        // Image stuff
+
     }
 
     renderStaticFields = () => {
@@ -70,12 +73,31 @@ export default class RecipeForm extends Component {
         }));
     }
 
+    addImage = () => {
+        const fileInput = document.getElementById('imageUpload');
+        const preview = document.getElementById('imagePreview');
+        const files = fileInput.files;
+
+        while(preview.firstChild) {
+            preview.removeChild(preview.firstChild);
+        }
+
+        if(files.length !== 0) {
+            const image = document.createElement('img');
+            image.src = window.URL.createObjectURL(files[0]);
+            preview.appendChild(image);
+        }
+    }
+
     render() {
         const {ingredients, method} = this.state
 
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
+                    <label htmlFor="imageUpload" id="imageUploadLabel">Add Image</label>
+                    <input type="file" id="imageUpload" accept=".jpg, .jpeg, .png" onChange={this.addImage} />
+                    <div id="imagePreview"></div>
                     {this.renderStaticFields()}
                     <button onClick={this.addIngredient}>Add new ingredient</button>
                     <IngredientInputs ingredients={ingredients} onChange={this.handleChange}/>
