@@ -9,7 +9,11 @@ const recipeSchema = new Schema({
     description: String,
     syns: Number,
     ingredients: Array,
-    method: Array
+    method: Array,
+    image: {
+        data: Buffer,
+        contentType: String
+    }
 })
 
 mongoose.model('recipe', recipeSchema);
