@@ -12,13 +12,31 @@ export default class Recipes extends Component {
     };
 
     getRecipes() {
-        return this.props.recipes.map((recipe, i) => {
-            const base64Flag = 'data:image/jpeg;base64,';
-            const imageStr = this.arrayBufferToBase64(recipe.image.data.data);
-            const image = base64Flag + imageStr;
+        console.log(this.props.recipes);
 
-            return <div key={i}><li>{recipe.name}<br/><br/><img src={image}/></li><br/></div>;
-        })
+        if(this.props.recipes.length !== 0) {
+
+            return this.props.recipes.map((recipe, i) => {
+
+                let theImageIfItExists = null;                
+                
+                if(recipe.image) {
+                    console.log("ummm");
+                    console.log(recipe);
+                    const base64Flag = 'data:image/jpeg;base64,';
+                    const imageStr = this.arrayBufferToBase64(recipe.image.data.data);
+                    const image = base64Flag + imageStr;
+                    theImageIfItExists = <img src={image} alt="whatever"/>
+                } else {
+                    // just leave it as it is 
+                }
+
+                return <div key={i}><li>{recipe.name}<br/><br/>{theImageIfItExists}</li><br/></div>;
+                
+            })
+        } else {
+            return null;
+        }
     }
     
     render() {
