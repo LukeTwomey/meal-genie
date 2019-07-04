@@ -14,7 +14,8 @@ export default class RecipeForm extends Component {
         description: '',
         syns: '',
         ingredients: [{ingredient: '', quantity: '', unit: ''}],
-        method: [{step: ''}]
+        method: [{step: ''}],
+        image: null
     }
 
     handleChange = e => {
@@ -36,12 +37,19 @@ export default class RecipeForm extends Component {
 
     handleSubmit = async e => {
         e.preventDefault();
-        const { name, rating, cookingTime, servings, description, syns, ingredients, method } = this.state;
-        const res = await axios.post('/api/recipes', { name, rating, cookingTime, servings, description, syns, ingredients, method });
+
+        // Need to submit post using multipart/form-data, as there is a File (image) included
+        const formData = new FormData();
+
+        // Loop through all form fields and add them to the formData which will be sent in the post request
+        for (let field in this.state) {
+            formData.set( field, this.state[field])
+        }
+
+        // Set up the config to tell axios that this is a multipart post request (text and image/file)
+        const config = { headers: {'content-type': 'multipart/form-data'} }
+        const res = await axios.post('/api/recipes', formData, config);
         console.log(res.data);
-
-        // Image stuff
-
     }
 
     renderStaticFields = () => {
@@ -86,6 +94,7 @@ export default class RecipeForm extends Component {
             const image = document.createElement('img');
             image.src = window.URL.createObjectURL(files[0]);
             preview.appendChild(image);
+            this.setState({ image: files[0] });
         }
     }
 
