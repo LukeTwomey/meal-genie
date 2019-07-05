@@ -14,7 +14,7 @@ export default class Recipes extends Component {
     getRecipes() {
         const {recipes} = this.props;
 
-        return recipes.map((recipe, i) => {
+        return recipes.reverse().map((recipe, i) => {
             let recipeImage = null;                
             
             if(recipe.image) {
