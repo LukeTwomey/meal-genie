@@ -50,6 +50,7 @@ export default class RecipeForm extends Component {
         const config = { headers: {'content-type': 'multipart/form-data'} }
         const res = await axios.post('/api/recipes', formData, config);
         console.log(res.data);
+        this.props.fetchRecipes();
     }
 
     renderStaticFields = () => {

@@ -11,9 +11,13 @@ class App extends React.Component {
     recipes: []
   }
 
-  componentDidMount = async () => {
+  fetchRecipes = async () => {
     const res = await axios.get('/api/recipes');
     this.setState({ recipes: res.data });
+  }
+
+  componentDidMount() {
+    this.fetchRecipes();
   }
 
   render() {
@@ -24,7 +28,7 @@ class App extends React.Component {
         <div>
           <Route path="/" exact component={Landing} />
           <Route path="/recipes" exact render={(props) => <Recipes {...props} recipes={recipes} />} />
-          <Route path="/recipes/new" exact component={RecipeNew} />
+          <Route path="/recipes/new" exact render={(props) => <RecipeNew {...props} fetchRecipes={this.fetchRecipes} />} />
         </div>
       </BrowserRouter>
     );
