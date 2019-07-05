@@ -12,31 +12,20 @@ export default class Recipes extends Component {
     };
 
     getRecipes() {
-        console.log(this.props.recipes);
+        const {recipes} = this.props;
 
-        if(this.props.recipes.length !== 0) {
+        return recipes.map((recipe, i) => {
+            let recipeImage = null;                
+            
+            if(recipe.image) {
+                const base64Flag = 'data:image/jpeg;base64,';
+                const imageStr = this.arrayBufferToBase64(recipe.image.data.data);
+                const image = base64Flag + imageStr;
+                recipeImage = <img src={image} alt="Recipe" className='recipeImage'/>
+            }
 
-            return this.props.recipes.map((recipe, i) => {
-
-                let theImageIfItExists = null;                
-                
-                if(recipe.image) {
-                    console.log("ummm");
-                    console.log(recipe);
-                    const base64Flag = 'data:image/jpeg;base64,';
-                    const imageStr = this.arrayBufferToBase64(recipe.image.data.data);
-                    const image = base64Flag + imageStr;
-                    theImageIfItExists = <img src={image} alt="whatever"/>
-                } else {
-                    // just leave it as it is 
-                }
-
-                return <div key={i}><li>{recipe.name}<br/><br/>{theImageIfItExists}</li><br/></div>;
-                
-            })
-        } else {
-            return null;
-        }
+            return <div key={i}><li>{recipe.name}{recipeImage}</li></div>;
+        })
     }
     
     render() {
@@ -44,7 +33,7 @@ export default class Recipes extends Component {
             <div>
                 <h1>Recipes</h1>
                 <ul>
-                    {this.getRecipes()}
+                    {this.props.recipes.length !== 0 ? this.getRecipes() : null}
                 </ul>
                 <Link to="/recipes/new">Add new recipe</Link>
             </div>
