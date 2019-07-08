@@ -14,7 +14,7 @@ class App extends React.Component {
 
   fetchRecipes = async () => {
     const res = await axios.get('/api/recipes');
-    this.setState({ recipes: res.data });
+    this.setState({ recipes: res.data.reverse() });
   }
 
   componentDidMount() {
