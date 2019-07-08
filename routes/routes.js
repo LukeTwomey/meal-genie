@@ -30,10 +30,17 @@ module.exports = app => {
 
         const { name, rating, cookingTime, servings, description, syns, ingredients, method } = req.body;
 
+        // ingredients and method are JSON arrays of objects. Need to be parsed before adding to the database
+        const _ingredients = JSON.parse(ingredients);
+        const _method = JSON.parse(method);
+
         // Save the recipe to the db
-        const _recipe = await new Recipe({ name, rating, cookingTime, servings, description, syns, ingredients, method, image
+        const _recipe = await new Recipe({ name, rating, cookingTime, servings, description, syns, ingredients: _ingredients, method: _method, image
         }).save();
+        console.log(_recipe);
         
         res.send(_recipe);
     })
 }
+
+

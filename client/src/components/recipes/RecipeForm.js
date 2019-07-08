@@ -43,7 +43,15 @@ export default class RecipeForm extends Component {
 
         // Loop through all form fields and add them to the formData which will be sent in the post request
         for (let field in this.state) {
-            formData.set( field, this.state[field])
+            
+            // handle case where data is an array (like ingredients or method)
+            if(Array.isArray(this.state[field])){
+                let data = JSON.stringify(this.state[field]);
+                formData.set(field, data);
+            } else {
+                // Set formdata for all the other normal string fields (name, rating, description etc)
+                formData.set( field, this.state[field])
+            }
         }
 
         // Set up the config to tell axios that this is a multipart post request (text and image/file)
