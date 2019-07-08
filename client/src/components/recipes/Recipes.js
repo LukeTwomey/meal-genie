@@ -24,7 +24,8 @@ export default class Recipes extends Component {
                 recipeImage = <img src={image} alt="Recipe" className='recipeImage'/>
             }
 
-            return <div key={i}><li>{recipe.name}{recipeImage}</li></div>;
+            let recipeUrlName = recipe.name.replace(/\s+/g, '-').toLowerCase();
+            return <div key={i}><li><Link to={`/recipes/${recipeUrlName}`}>{recipe.name}</Link>{recipeImage}</li></div>;
         })
     }
     
