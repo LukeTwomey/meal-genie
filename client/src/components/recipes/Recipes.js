@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import RecipeImage from './RecipeImage';
+import './Recipes.css';
 
 export default class Recipes extends Component {
 
@@ -10,12 +11,13 @@ export default class Recipes extends Component {
         return recipes.map((recipe, i) => {
             let recipeUrlName = recipe.name.replace(/\s+/g, '-').toLowerCase();
             return (
-                <div key={i}>
-                    <li>
-                        <Link to={`/recipes/${recipeUrlName}`}>{recipe.name}</Link>
-                        <RecipeImage image={recipe.image}/>
-                    </li>
+                <Link to={`/recipes/${recipeUrlName}`}>
+                <div className="recipeCard" key={i}>
+                    <RecipeImage image={recipe.image}/>
+                    <h2>{recipe.name}</h2>
+                    {/* <Link to={`/recipes/${recipeUrlName}`}>{recipe.name}</Link> */}
                 </div>
+                </Link>
             ) 
         })
     }
@@ -25,11 +27,9 @@ export default class Recipes extends Component {
 
         return (
             <div>
-                <h1>Recipes</h1>
-                <ul>
-                    {recipes.length !== 0 ? this.getRecipes() : null}
-                </ul>
-                <Link to="/recipes/new">Add new recipe</Link>
+                {/* <h1>Recipes</h1> */}
+                {recipes.length !== 0 ? this.getRecipes() : null}
+                {/* <Link to="/recipes/new">Add new recipe</Link> */}
             </div>
         )
     }

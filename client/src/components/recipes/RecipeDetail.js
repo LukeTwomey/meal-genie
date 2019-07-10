@@ -29,9 +29,9 @@ const RecipeDetail = (props) => {
 
         return (
             <div>
-                <h1>Recipe Detail</h1>
-                <Link to="/recipes">View all recipes</Link><br/><br/>
-                <h2>{recipe.name}</h2>
+                {/* <h1>Recipe Detail</h1> */}
+                {/* <Link to="/recipes">View all recipes</Link><br/><br/> */}
+                <h1>{recipe.name}</h1>
                 <p>{recipe.description}</p>
                 <RecipeImage image={recipe.image}/>
                 <p>Rating: {recipe.rating}</p>

@@ -1,4 +1,5 @@
 header {
+    margin-bottom: 1em;
     position: relative;
 }
 
@@ -10,9 +11,17 @@ header {
 
 .icon {
     color: #808080;
-    /* cursor: pointer; */
-    position: absolute;
     font-size: 1.5em;
+}
+
+.recipeIcon {
+    color: #808080;
+    position: absolute;
     left: 0.5em;
     top: 1em;
+    text-align: center;
+}
+
+.recipeIcon p {
+    font-size: 0.8em;
 }

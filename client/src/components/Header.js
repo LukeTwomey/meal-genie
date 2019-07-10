@@ -7,7 +7,12 @@ import './Header.css';
 const Header = () => {
     return (
         <header>
-            <Link to="/recipes"><FontAwesomeIcon className='icon' icon={faUtensils} /></Link>
+            <Link to="/recipes">
+                <div className='recipeIcon'>
+                    <FontAwesomeIcon className='icon' icon={faUtensils} />
+                    <p>Recipes</p>
+                </div>
+            </Link>
             <Link to="/"><img src='images/logo.png' alt='logo' className='logo' /></Link>
         </header>
     );

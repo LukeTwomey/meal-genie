@@ -1,8 +1,22 @@
 body {
-  color: #303030;
+  color: #525252;
   font-family: 'Antic', sans-serif;
+  margin: 1em;
 }
 
 h1 {
   text-align: center;
+}
+
+h2 {
+  font-size: 1em;
+}
+
+a {
+  color: #525252;
+  text-decoration: none;
+}
+
+p {
+  margin: 0;
 }
