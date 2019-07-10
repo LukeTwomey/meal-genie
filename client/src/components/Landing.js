@@ -1,9 +1,9 @@
 import React from 'react';
 
 const Landing = () => {
-    return (
-        <h1></h1>
-    )
+    // return (
+    //     <p>The quick brown fox jumps over the lazy dog.</p>
+    // )
     return null
 }
 
