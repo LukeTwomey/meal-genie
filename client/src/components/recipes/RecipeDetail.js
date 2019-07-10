@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 import RecipeImage from './RecipeImage';
 
 const RecipeDetail = (props) => {
@@ -31,9 +30,9 @@ const RecipeDetail = (props) => {
             <div>
                 {/* <h1>Recipe Detail</h1> */}
                 {/* <Link to="/recipes">View all recipes</Link><br/><br/> */}
-                <h1>{recipe.name}</h1>
-                <p>{recipe.description}</p>
                 <RecipeImage image={recipe.image}/>
+                <h2>{recipe.name}</h2>
+                <p>{recipe.description}</p>
                 <p>Rating: {recipe.rating}</p>
                 <p>Cooking Time: {recipe.cookingTime}</p>
                 <p>Servings: {recipe.servings}</p>
