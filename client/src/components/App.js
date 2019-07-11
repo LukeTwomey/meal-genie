@@ -10,12 +10,16 @@ import './App.css';
 
 class App extends React.Component {
   state = {
-    recipes: []
+    recipes: [],
+    loading: true
   }
 
   fetchRecipes = async () => {
     const res = await axios.get('/api/recipes');
-    this.setState({ recipes: res.data.reverse() });
+    this.setState({ 
+      recipes: res.data.reverse(),
+      loading: false
+    });
   }
 
   componentDidMount() {
@@ -23,7 +27,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { recipes } = this.state;
+    const { recipes, loading } = this.state;
 
     return (
       <BrowserRouter>
@@ -31,7 +35,7 @@ class App extends React.Component {
           <Header />
           <Route path="/" exact component={Landing} />
           <Switch>
-            <Route path="/recipes" exact render={(props) => <Recipes {...props} recipes={recipes} />} />
+            <Route path="/recipes" exact render={(props) => <Recipes {...props} recipes={recipes} loading={loading}/>} />
             <Route path="/recipes/new" exact render={(props) => <RecipeNew {...props} fetchRecipes={this.fetchRecipes} />} />
             <Route path="/recipes/:name" exact render={(props) => <RecipeDetail {...props} recipes={recipes} />} />
           </Switch>
