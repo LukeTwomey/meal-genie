@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUtensils } from '@fortawesome/pro-light-svg-icons'
+import logo from '../images/logo.png';
 import './Header.css';
 
 const Header = () => {
@@ -13,7 +14,7 @@ const Header = () => {
                     <p>Recipes</p>
                 </div>
             </Link>
-            <Link to="/"><img src='images/logo.png' alt='logo' className='logo' /></Link>
+            <Link to="/"><img src={logo} alt='logo' className='logo' /></Link>
         </header>
     );
 };
