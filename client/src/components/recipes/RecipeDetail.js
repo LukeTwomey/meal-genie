@@ -1,5 +1,7 @@
 import React from 'react';
 import RecipeImage from './RecipeImage';
+import Loading from '../Loading/Loading';
+import './RecipeDetail.css';
 
 const RecipeDetail = (props) => {
     let recipeUrlName = props.match.params.name;
@@ -11,12 +13,7 @@ const RecipeDetail = (props) => {
     });
 
     if (!recipe) {
-        return (
-            <div>
-                <h1>Recipe Detail</h1>
-                <h2>Loading...</h2>
-            </div>
-        )
+        return <Loading />
     } else {
         let ingredients = recipe.ingredients.map((ingredient, i) => { 
             return <li key={i}>{ingredient.quantity}{ingredient.unit} {ingredient.ingredient}</li> 
@@ -28,19 +25,22 @@ const RecipeDetail = (props) => {
 
         return (
             <div>
-                {/* <h1>Recipe Detail</h1> */}
-                {/* <Link to="/recipes">View all recipes</Link><br/><br/> */}
+            
+            <div className='recipeDetail'>
                 <RecipeImage image={recipe.image}/>
-                <h2>{recipe.name}</h2>
-                <p>{recipe.description}</p>
-                <p>Rating: {recipe.rating}</p>
-                <p>Cooking Time: {recipe.cookingTime}</p>
-                <p>Servings: {recipe.servings}</p>
-                <p>Syns: {recipe.syns}</p>
-                <h3>Ingredients</h3>
-                <ul>{ingredients}</ul>
-                <h3>Method</h3>
-                <ul>{method}</ul>
+                <div className='recipeText'>
+                    <h2>{recipe.name}</h2>
+                    <p>{recipe.description}</p>
+                    <p>Rating: {recipe.rating}</p>
+                    <p>Cooking Time: {recipe.cookingTime}</p>
+                    <p>Servings: {recipe.servings}</p>
+                    <p>Syns: {recipe.syns}</p>
+                    <h3>Ingredients</h3>
+                    <ul>{ingredients}</ul>
+                    <h3>Method</h3>
+                    <ul>{method}</ul>
+                </div>
+            </div>
             </div>
         )
     }

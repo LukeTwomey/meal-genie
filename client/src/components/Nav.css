@@ -5,6 +5,7 @@ nav {
     height: 40px;
     padding: 0.5em 0;
     width: 100%;
+    z-index: 100;
 }
 
 nav a {
@@ -19,7 +20,7 @@ nav a {
 
 .logo img {
     position: relative;
-    bottom: 34px;
+    bottom: 32px;
     width: 100%;
 }
 
