@@ -8,13 +8,15 @@ import './Nav.css';
 const Nav = () => {
     return (
         <nav>
-            <Link to="/recipes">
-                <div className='recipeIcon'>
+            <Link to="/recipes" className='recipeIcon'>
+                <div>
                     <FontAwesomeIcon className='icon' icon={faUtensils} />
                     <p>Recipes</p>
                 </div>
             </Link>
-            <Link to="/"><img src={logo} alt='logo' className='logo' /></Link>
+            <Link to="/" className='logo'>
+                <img src={logo} alt='logo' />
+            </Link>
         </nav>
     );
 };

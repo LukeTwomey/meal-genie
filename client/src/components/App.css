@@ -1,6 +1,14 @@
 body {
   color: #525252;
   font-family: 'Antic', sans-serif;
+  margin: 0;
+}
+
+.container {
+  margin-bottom: 120px;
+}
+
+.pageContent {
   margin: 1em;
 }
 

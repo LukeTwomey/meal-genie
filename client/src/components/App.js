@@ -31,14 +31,16 @@ class App extends React.Component {
 
     return (
       <BrowserRouter>
-        <div>
+        <div className='container'>
           <Nav />
-          <Route path="/" exact component={Landing} />
-          <Switch>
-            <Route path="/recipes" exact render={(props) => <Recipes {...props} recipes={recipes} loading={loading}/>} />
-            <Route path="/recipes/new" exact render={(props) => <RecipeNew {...props} fetchRecipes={this.fetchRecipes} />} />
-            <Route path="/recipes/:name" exact render={(props) => <RecipeDetail {...props} recipes={recipes} />} />
-          </Switch>
+          <div className='pageContent'>
+            <Route path="/" exact component={Landing} />
+            <Switch>
+              <Route path="/recipes" exact render={(props) => <Recipes {...props} recipes={recipes} loading={loading}/>} />
+              <Route path="/recipes/new" exact render={(props) => <RecipeNew {...props} fetchRecipes={this.fetchRecipes} />} />
+              <Route path="/recipes/:name" exact render={(props) => <RecipeDetail {...props} recipes={recipes} />} />
+            </Switch>
+          </div>
         </div>
       </BrowserRouter>
     );

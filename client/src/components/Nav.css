@@ -1,12 +1,26 @@
 nav {
-    margin-bottom: 1em;
-    position: relative;
+    background: #fff;
+    position: fixed;
+    bottom: 0;
+    height: 35px;
+    padding: 0.5em 0;
+    width: 100%;
 }
 
-.logo {
+nav a {
+    width: 50px;
+}  
+
+.logo{
     width: 50px;
     display: block;
     margin: auto;
+}
+
+.logo img {
+    position: relative;
+    bottom: 34px;
+    width: 100%;
 }
 
 .icon {
@@ -18,7 +32,7 @@ nav {
     color: #808080;
     position: absolute;
     left: 0.5em;
-    top: 1em;
+    bottom: 0.25em;
     text-align: center;
 }
 
