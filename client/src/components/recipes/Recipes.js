@@ -12,8 +12,8 @@ export default class Recipes extends Component {
         return recipes.map((recipe, i) => {
             let recipeUrlName = recipe.name.replace(/\s+/g, '-').toLowerCase();
             return (
-                <Link to={`/recipes/${recipeUrlName}`}>
-                <div className="recipeCard" key={i}>
+                <Link to={`/recipes/${recipeUrlName}`} key={i}>
+                <div className="recipeCard" >
                     <RecipeImage image={recipe.image}/>
                     <h2>{recipe.name}</h2>
                     {/* <Link to={`/recipes/${recipeUrlName}`}>{recipe.name}</Link> */}

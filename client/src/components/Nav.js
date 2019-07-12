@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUtensils } from '@fortawesome/pro-light-svg-icons'
 import logo from '../images/logo.png';
-import './Header.css';
+import './Nav.css';
 
-const Header = () => {
+const Nav = () => {
     return (
-        <header>
+        <nav>
             <Link to="/recipes">
                 <div className='recipeIcon'>
                     <FontAwesomeIcon className='icon' icon={faUtensils} />
@@ -15,8 +15,8 @@ const Header = () => {
                 </div>
             </Link>
             <Link to="/"><img src={logo} alt='logo' className='logo' /></Link>
-        </header>
+        </nav>
     );
 };
 
-export default Header;
+export default Nav;

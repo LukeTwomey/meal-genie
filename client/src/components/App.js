@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
-import Header from './Header';
+import Nav from './Nav';
 import Landing from './Landing';
 import Recipes from './recipes/Recipes';
 import RecipeDetail from './recipes/RecipeDetail';
@@ -32,7 +32,7 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <div>
-          <Header />
+          <Nav />
           <Route path="/" exact component={Landing} />
           <Switch>
             <Route path="/recipes" exact render={(props) => <Recipes {...props} recipes={recipes} loading={loading}/>} />
