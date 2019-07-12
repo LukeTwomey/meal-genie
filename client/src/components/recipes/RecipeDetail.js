@@ -27,9 +27,12 @@ const RecipeDetail = (props) => {
             <div>
             
             <div className='recipeDetail'>
-                <RecipeImage image={recipe.image}/>
+                <div className='imageContainer'>
+                    <RecipeImage image={recipe.image}/>
+                </div>
+                <h2>{recipe.name}</h2>
                 <div className='recipeText'>
-                    <h2>{recipe.name}</h2>
+                    {/* <h2>{recipe.name}</h2> */}
                     <p>{recipe.description}</p>
                     <p>Rating: {recipe.rating}</p>
                     <p>Cooking Time: {recipe.cookingTime}</p>

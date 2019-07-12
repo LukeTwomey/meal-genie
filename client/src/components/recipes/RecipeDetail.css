@@ -1,10 +1,23 @@
-.recipeDetail .recipeImage {
+.recipeDetail h2 {
+    color: white;
+    font-size: 1.6em;
+    position: absolute;
+    text-shadow: #000000 1px 1px 1px;
+    top: 1em;
+}
+
+.recipeDetail .imageContainer {
+    background: #000;
     position: absolute;
     top: 0;
     left: 0;
+}
+
+.recipeDetail .recipeImage {
+    border-radius: 0;
     height: auto;
     max-height: 214px;
-    border-radius: 0;
+    opacity: 0.8;
 }
 
 .recipeText {
