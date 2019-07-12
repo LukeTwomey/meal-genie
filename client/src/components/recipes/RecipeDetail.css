@@ -1,19 +1,16 @@
 .recipeDetail .recipeImage {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     height: auto;
+    max-height: 214px;
     border-radius: 0;
 }
 
 .recipeText {
     position: relative;
     background: white;
-    /* margin-top: 10em; */
-    top: 20vh;
+    margin-top: 10em;
     padding: 1em;
     border-radius: 7px;
-    width: 89%;
-    overflow: scroll;
-    height: 63vh;
 }
