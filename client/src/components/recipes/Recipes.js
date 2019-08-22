@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchRecipes } from '../../actions';
 import { Link } from "react-router-dom";
 import RecipeImage from './RecipeImage';
 import Loading from '../Loading/Loading';
 import './Recipes.css';
 
-export default class Recipes extends Component {
+class Recipes extends Component {
+    componentDidMount() {
+        this.props.fetchRecipes();
+    }
 
     getRecipes() {
         const {recipes} = this.props;
@@ -38,3 +43,15 @@ export default class Recipes extends Component {
         }
     }
 }
+
+const mapStateToProps = (state) => {
+    return { 
+        recipes: state.recipes,
+        loading: state.loading 
+    };
+}
+
+export default connect(
+    mapStateToProps, 
+    { fetchRecipes }
+)(Recipes);

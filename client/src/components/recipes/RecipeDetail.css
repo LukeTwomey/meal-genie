@@ -1,8 +1,9 @@
 .recipeDetail h2 {
     color: white;
-    font-size: 1.6em;
+    font-size: 1.8em;
+    font-weight: 400;
     position: absolute;
-    text-shadow: #000000 1px 1px 1px;
+    text-shadow: #565656 1px 1px 1px;
     top: 1em;
 }
 
@@ -17,7 +18,7 @@
     border-radius: 0;
     height: auto;
     max-height: 214px;
-    opacity: 0.8;
+    opacity: 0.95;
 }
 
 .recipeText {
