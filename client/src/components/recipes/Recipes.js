@@ -18,11 +18,10 @@ class Recipes extends Component {
             let recipeUrlName = recipe.name.replace(/\s+/g, '-').toLowerCase();
             return (
                 <Link to={`/recipes/${recipeUrlName}`} key={i}>
-                <div className="recipeCard" >
-                    <RecipeImage image={recipe.image}/>
-                    <h2>{recipe.name}</h2>
-                    {/* <Link to={`/recipes/${recipeUrlName}`}>{recipe.name}</Link> */}
-                </div>
+                    <div className="recipeCard" >
+                        <RecipeImage image={recipe.image}/>
+                        <h2>{recipe.name}</h2>
+                    </div>
                 </Link>
             ) 
         })
@@ -30,14 +29,13 @@ class Recipes extends Component {
     
     render() {
         const  { recipes, loading } = this.props;
-        if(loading) {
+
+        if(loading.status) {
             return <Loading />
         } else {
             return (
                 <div>
-                    {/* <h1>Recipes</h1> */}
                     {recipes.length !== 0 ? this.getRecipes() : null}
-                    {/* <Link to="/recipes/new">Add new recipe</Link> */}
                 </div>
             )
         }

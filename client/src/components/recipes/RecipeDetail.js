@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import RecipeImage from './RecipeImage';
 import Loading from '../Loading/Loading';
 import './RecipeDetail.css';
@@ -49,4 +50,13 @@ const RecipeDetail = (props) => {
     }
 }
 
-export default RecipeDetail;
+const mapStateToProps = (state) => {
+    return { 
+        recipes: state.recipes,
+        loading: state.loading
+    };
+}
+
+export default connect(
+    mapStateToProps
+)(RecipeDetail);

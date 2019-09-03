@@ -1,7 +1,13 @@
 import axios from 'axios';
 
-// just defining a function that is going to return a function (made possible by using thunk)
 export const fetchRecipes = () => async dispatch => {
+    dispatch(setLoadingStatus(true));
     const response = await axios.get('/api/recipes');
-    dispatch({ type: 'FETCH_RECIPES', payload: response.data })
+    dispatch({ type: 'FETCH_RECIPES', payload: response.data.reverse() });
+    dispatch(setLoadingStatus(false));
 };
+
+export const setLoadingStatus = boolean => ({
+    type: 'SET_LOADING',
+    payload: boolean
+});
