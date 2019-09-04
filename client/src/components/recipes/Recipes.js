@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { fetchRecipes } from '../../actions';
+// import { connect } from 'react-redux';
+// import { fetchRecipes } from '../../actions';
 import { Link } from "react-router-dom";
 import RecipeImage from './RecipeImage';
 import Loading from '../Loading/Loading';
 import './Recipes.css';
 
 class Recipes extends Component {
-    componentDidMount() {
-        this.props.fetchRecipes();
-    }
+    // componentDidMount() {
+    //     this.props.fetchRecipes();
+    // }
 
     getRecipes() {
         const {recipes} = this.props;
@@ -42,14 +42,16 @@ class Recipes extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return { 
-        recipes: state.recipes,
-        loading: state.loading 
-    };
-}
+// const mapStateToProps = (state) => {
+//     return { 
+//         recipes: state.recipes,
+//         loading: state.loading 
+//     };
+// }
 
-export default connect(
-    mapStateToProps, 
-    { fetchRecipes }
-)(Recipes);
+// export default connect(
+//     mapStateToProps, 
+//     { fetchRecipes }
+// )(Recipes);
+
+export default Recipes;
