@@ -15,8 +15,6 @@ class App extends Component {
 	}
 
 	render () {
-		console.log(this.props.recipes);
-
 		return (
 			<BrowserRouter>
 				<div className='container'>

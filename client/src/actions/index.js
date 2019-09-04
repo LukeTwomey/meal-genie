@@ -11,3 +11,7 @@ export const setLoadingStatus = boolean => ({
     type: 'SET_LOADING',
     payload: boolean
 });
+
+export const planMeals = () => ({
+    type: 'PLAN_MEALS'
+});
