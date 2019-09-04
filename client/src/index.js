@@ -7,6 +7,7 @@ import storage from 'redux-persist/lib/storage'
 import { PersistGate } from 'redux-persist/integration/react';
 import thunk from 'redux-thunk';
 import App from './components/App';
+import Loading from './components/Loading/Loading';
 import reducers from './reducers';
 
 const persistConfig = { key: 'root', storage, }
@@ -16,7 +17,7 @@ const persistor = persistStore(store);
 
 ReactDOM.render(
     <Provider store={store}>
-        <PersistGate persistor={persistor}>
+        <PersistGate loading={<Loading/>} persistor={persistor}>
             <App />
         </PersistGate>
     </Provider>, 
