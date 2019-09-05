@@ -12,10 +12,6 @@ nav a {
     width: 60px;
 }  
 
-.logoContainer{
-    width: 100%;
-}
-
 .logo{
     cursor: pointer;
     width: 50px;
@@ -50,5 +46,5 @@ nav a {
 }
 
 .mealPlanIcon {
-    left: 4.2em;
+    left: 3.9em;
 }

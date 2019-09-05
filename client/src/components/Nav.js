@@ -25,12 +25,10 @@ const Nav = (props) => {
                     <p>Meal Plan</p>
                 </div>
             </Link>
-            <div className='logoContainer'>
-                <img src={logo} alt='logo' className='logo' onClick={ () => {
-                    audio.play();
-                    props.planMeals();
-                }}/>
-            </div>
+            <img src={logo} alt='logo' className='logo' onClick={ () => {
+                audio.play();
+                props.planMeals();
+            }}/>
         </nav>
     );
 };
