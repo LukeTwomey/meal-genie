@@ -12,6 +12,10 @@ export const setLoadingStatus = boolean => ({
     payload: boolean
 });
 
-export const planMeals = () => ({
-    type: 'PLAN_MEALS'
-});
+export const planMeals = () => {
+    return (dispatch, getState) => {
+        const state = getState();
+        const recipes = state.recipes;
+        dispatch({ type: 'PLAN_MEALS', payload: recipes });
+    }
+}
