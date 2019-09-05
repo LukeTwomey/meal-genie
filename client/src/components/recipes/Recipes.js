@@ -8,9 +8,8 @@ class Recipes extends Component {
         const {recipes} = this.props;
 
         return recipes.map((recipe, i) => {
-            let recipeUrlName = recipe.name.replace(/\s+/g, '-').toLowerCase();
             return (
-                <RecipeCard recipe={recipe} recipeUrlName={recipeUrlName} key={i}/>
+                <RecipeCard recipe={recipe} key={i}/>
             ) 
         })
     }

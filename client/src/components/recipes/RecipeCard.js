@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import './RecipeCard.css';
 
 const RecipeCard = (props) => {
-    const { recipe, recipeUrlName } = props;
+    const { recipe } = props;
+    const recipeUrlName = recipe.name.replace(/\s+/g, '-').toLowerCase();
 
     return (
         <Link to={`/recipes/${recipeUrlName}`}>

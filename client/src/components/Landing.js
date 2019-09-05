@@ -1,14 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import RecipeCard from './recipes/RecipeCard';
 
 const Landing = (props) => {
-    console.log(props);
+    const recipe = props.recipes[props.mealPlan.randomRecipe];
 
     if(props.recipes.length === 0) {
         return null;
     }
-    
-    return <p>{props.recipes[props.mealPlan.randomRecipe].name}</p>;
+
+    return <RecipeCard recipe={recipe} />
 }
 
 const mapStateToProps = (state) => {
