@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { fetchRecipes } from '../actions';
+import ScrollToTop from './ScrollToTop';
 import Nav from './Nav';
 import Landing from './Landing';
 import Recipes from './recipes/Recipes';
@@ -17,6 +18,7 @@ class App extends Component {
 	render () {
 		return (
 			<BrowserRouter>
+				<ScrollToTop>
 				<div className='container'>
 					<Nav />
 					<div className='pageContent'>
@@ -28,6 +30,7 @@ class App extends Component {
 					</Switch>
 					</div>
 				</div>
+				</ScrollToTop>
 			</BrowserRouter>
 		);
 	}
