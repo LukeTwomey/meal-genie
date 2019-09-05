@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from "react-router-dom";
-import RecipeImage from './RecipeImage';
+import RecipeCard from './RecipeCard';
 import Loading from '../Loading/Loading';
-import './Recipes.css';
 
 class Recipes extends Component {
     getRecipes() {
@@ -12,12 +10,7 @@ class Recipes extends Component {
         return recipes.map((recipe, i) => {
             let recipeUrlName = recipe.name.replace(/\s+/g, '-').toLowerCase();
             return (
-                <Link to={`/recipes/${recipeUrlName}`} key={i}>
-                    <div className="recipeCard" >
-                        <RecipeImage image={recipe.image}/>
-                        <h2>{recipe.name}</h2>
-                    </div>
-                </Link>
+                <RecipeCard recipe={recipe} recipeUrlName={recipeUrlName} key={i}/>
             ) 
         })
     }
