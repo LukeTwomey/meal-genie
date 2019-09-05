@@ -1,15 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Loading from './Loading/Loading';
 import RecipeCard from './recipes/RecipeCard';
 
 const Landing = (props) => {
-    const recipe = props.recipes[props.mealPlan.randomRecipe];
+    const recipes = props.mealPlan.recipes;
 
-    if(props.recipes.length === 0) {
+    if (recipes === undefined) {
+        return <Loading />
+    } else if(recipes.length === 0) {
+        console.log("Nothing here! Why don't you generate a meal plan?");
         return null;
+    } else {
+        return recipes.map((recipe, i) => {
+            return (
+                <RecipeCard recipe={recipe} key={i}/>
+            ) 
+        })
     }
-
-    return <RecipeCard recipe={recipe} />
 }
 
 const mapStateToProps = (state) => {
