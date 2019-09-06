@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Loading from './Loading/Loading';
 import RecipeCard from './recipes/RecipeCard';
 
 const Landing = (props) => {
