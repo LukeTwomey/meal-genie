@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUtensils, faCalendarAlt } from '@fortawesome/pro-light-svg-icons';
+import { faUtensils as faUtensilsSolid, faCalendarAlt as faCalendarAltSolid } from '@fortawesome/pro-solid-svg-icons';
 import { planMeals } from '../actions';
 import logo from '../images/logo.png';
 import themeTune from '../audio/theme-tune.m4a';
@@ -13,18 +14,20 @@ const Nav = (props) => {
 
     return (
         <nav>
-            <Link to="/recipes" className='recipeIcon'>
+            <NavLink exact to="/recipes" className='recipeIcon' activeClassName="selected">
                 <div>
-                    <FontAwesomeIcon className='icon' icon={faUtensils} />
+                    <FontAwesomeIcon className='emptyIcon' icon={faUtensils} />
+                    <FontAwesomeIcon className='solidIcon' icon={faUtensilsSolid} />
                     <p>Recipes</p>
                 </div>
-            </Link>
-            <Link to="/" className='mealPlanIcon'>
+            </NavLink>
+            <NavLink exact to="/" className='mealPlanIcon' activeClassName="selected">
                 <div>
-                    <FontAwesomeIcon className='icon' icon={faCalendarAlt} />
+                    <FontAwesomeIcon className='emptyIcon' icon={faCalendarAlt} />
+                    <FontAwesomeIcon className='solidIcon' icon={faCalendarAltSolid} />
                     <p>Meal Plan</p>
                 </div>
-            </Link>
+            </NavLink>
             <img src={logo} alt='logo' className='logo' onClick={ () => {
                 audio.play();
                 props.planMeals();

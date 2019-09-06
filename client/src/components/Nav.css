@@ -21,9 +21,20 @@ nav a {
     bottom: 32px;
 }
 
-.icon {
+.emptyIcon,
+.solidIcon {
     color: #808080;
     font-size: 1.5em;
+}
+
+nav a.selected .emptyIcon,
+nav a .solidIcon {
+    display: none;
+}
+
+nav a.selected .solidIcon {
+    color: #72a9e1;
+    display: inline;
 }
 
 .recipeIcon,
