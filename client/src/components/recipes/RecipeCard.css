@@ -1,5 +1,5 @@
 .recipeCard {
-    margin-bottom: 1em;
+    margin-bottom: 1.4em;
 }
 
 .recipeImage {
@@ -8,4 +8,24 @@
     object-fit: cover;
     width: 100%;
     height: 150px;
+}
+
+h2 {
+    font-size: 1.1em;
+    margin: 0.2em 0 0;
+}
+
+.iconContainer {
+    line-height: 1em;
+}
+
+.iconContainer * {
+    color: #808080;
+    display: inline-block;
+    font-size: 0.8em;
+    margin-right: 0.5em;
+}
+
+.iconContainer p {
+    margin-right: 1.2em;
 }
