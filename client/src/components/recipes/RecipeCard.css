@@ -29,3 +29,7 @@ h2 {
 .iconContainer p {
     margin-right: 1.2em;
 }
+
+.iconContainer svg path{
+    color: #a5b599;
+}
