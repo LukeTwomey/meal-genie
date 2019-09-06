@@ -6,11 +6,8 @@ import RecipeCard from './recipes/RecipeCard';
 const Landing = (props) => {
     const recipes = props.mealPlan.recipes;
 
-    if (recipes === undefined) {
-        return <Loading />
-    } else if(recipes.length === 0) {
-        console.log("Nothing here! Why don't you generate a meal plan?");
-        return null;
+    if (recipes === undefined || recipes.length === 0) {
+        return <p>Touch the genie to create a new meal plan!</p>;
     } else {
         return recipes.map((recipe, i) => {
             return (

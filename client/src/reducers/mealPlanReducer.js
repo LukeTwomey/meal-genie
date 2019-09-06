@@ -17,7 +17,7 @@ export default (state = initialState, action) => {
                 shuffledRecipes[i] = t;
             }
 
-            return { ...state, recipes: shuffledRecipes.slice(0,2) };
+            return { ...state, recipes: shuffledRecipes.slice(0,6) };
         default:
             return state;
     }
