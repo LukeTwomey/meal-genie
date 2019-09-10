@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { fetchRecipes } from '../actions';
 import ScrollToTop from './ScrollToTop';
 import Nav from './Nav';
-import Landing from './Landing';
+import MealPlan from './MealPlan';
 import Recipes from './recipes/Recipes';
 import RecipeDetail from './recipes/RecipeDetail';
 import RecipeNew from './recipes/RecipeNew';
@@ -22,7 +22,7 @@ class App extends Component {
 				<div className='container'>
 					<Nav />
 					<div className='pageContent'>
-					<Route path="/" exact component={Landing} />
+					<Route path="/" exact component={MealPlan} />
 					<Switch>
 						<Route path="/recipes" exact component={Recipes} />
 						<Route path="/recipes/new" exact component={RecipeNew} />
