@@ -7,7 +7,6 @@ import './RecipeCard.css';
 
 const RecipeCard = (props) => {
     const { recipe } = props;
-    console.log(recipe);
     const recipeUrlName = recipe.name.replace(/\s+/g, '-').toLowerCase();
 
     return (

@@ -1,16 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import RecipeCard from './recipes/RecipeCard';
+import './MealPlan.css';
 
 const Landing = (props) => {
     const recipes = props.mealPlan.recipes;
+    const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
     if (recipes === undefined || recipes.length === 0) {
         return <p>Touch the genie to create a new meal plan!</p>;
     } else {
         return recipes.map((recipe, i) => {
             return (
-                <RecipeCard recipe={recipe} key={i}/>
+                <div key={i}>
+                    <h1>{weekDays[i]}</h1>
+                    <RecipeCard recipe={recipe} />
+                </div>
             ) 
         })
     }
