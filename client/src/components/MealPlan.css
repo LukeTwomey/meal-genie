@@ -1,3 +1,7 @@
+.mealPlanCard {
+    position: relative;
+}
+
 h1 {
     font-size: 1.3em;
     margin-bottom: 0.3em;

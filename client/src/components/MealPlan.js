@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import RecipeCard from './recipes/RecipeCard';
+import Toolbar from './Toolbar';
 import './MealPlan.css';
 
 const Landing = (props) => {
@@ -12,8 +13,9 @@ const Landing = (props) => {
     } else {
         return recipes.map((recipe, i) => {
             return (
-                <div key={i}>
+                <div className='mealPlanCard' key={i}>
                     <h1>{weekDays[i]}</h1>
+                    <Toolbar />
                     <RecipeCard recipe={recipe} />
                 </div>
             ) 
