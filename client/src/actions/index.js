@@ -21,13 +21,9 @@ export const planMeals = () => {
 }
 
 export const toggleMealLock = id => {
-    console.log(id);
     return (dispatch, getState) => {
         const state = getState();
         const mealPlan = state.mealPlan.recipes;
-        // console.log(mealPlan[id]);
-
-        // need to pass in the mealPlan recipes, and the id to lock
         dispatch({ type: 'TOGGLE_MEAL_LOCK', payload: { mealPlan, id }});
     }
 }
