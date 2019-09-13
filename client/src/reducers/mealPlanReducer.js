@@ -18,6 +18,23 @@ export default (state = initialState, action) => {
             }
 
             return { ...state, recipes: shuffledRecipes.slice(0,7) };
+        case 'TOGGLE_MEAL_LOCK':
+            return { 
+                ...state, 
+                recipes: state.recipes.map((recipe) => {
+                    // Find the recipe with the matching id
+                    if(recipe._id === action.payload.id) {
+                        // Return a new object
+                        return {
+                            ...recipe,  // copy the existing recipe
+                            locked: (recipe.locked === undefined || recipe.locked === false ? true : false)  // toggle the locked status
+                        }
+                    }
+                
+                    // Leave every other item unchanged
+                    return recipe;
+                })
+            }
         default:
             return state;
     }

@@ -6,6 +6,7 @@ import './MealPlan.css';
 
 const Landing = (props) => {
     const recipes = props.mealPlan.recipes;
+    console.log(recipes);
     const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
     if (recipes === undefined || recipes.length === 0) {
@@ -15,7 +16,8 @@ const Landing = (props) => {
             return (
                 <div className='mealPlanCard' key={i}>
                     <h1>{weekDays[i]}</h1>
-                    <Toolbar />
+                    {/* <Toolbar id={i} /> */}
+                    <Toolbar id={recipe._id} />
                     <RecipeCard recipe={recipe} />
                 </div>
             ) 
