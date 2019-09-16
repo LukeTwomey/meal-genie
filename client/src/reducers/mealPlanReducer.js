@@ -20,26 +20,29 @@ export default (state = initialState, action) => {
             if({...state}.recipes.length === 0){
                 return { ...state, recipes: shuffledRecipes.slice(0,7) };
             } else {
-                return{ 
-                        ...state, 
-                        recipes: state.recipes.map((recipe) => {
-                            // Check if recipe is locked
-                            if(!recipe.locked) {
-                                // If it isn't, return a new recipe
-                                const nextRecipe = shuffledRecipes.pop();
+                let lockedRecipes = state.recipes.filter(recipe => recipe.locked === true );
+                let newMealPlan = [];
 
-                                // First check if the new recipe is the same as the one you're replacing
-                                if(nextRecipe === recipe){
-                                    // If it is, then pop another one and return that instead
-                                    return shuffledRecipes.pop();
-                                }
-                                
-                                return nextRecipe;
+                state.recipes.forEach((recipe) => {
+                    // Check if recipe is locked
+                    if(!recipe.locked) {
+                        for (let i = 0; i < shuffledRecipes.length; i++) {
+                            // If our lockedRecipes array contains this recipe already, OR it is the same as what is already there on the plan, move onto the next one in the shuffled list
+                            if (lockedRecipes.some(recipe => recipe._id === shuffledRecipes[i]._id) || shuffledRecipes[i]._id === recipe._id) {
+                                // already exists - either as locked recipe, OR the one on the day we are currently replacing
+                            } else {
+                                newMealPlan.push(shuffledRecipes[i]);
+                                shuffledRecipes.splice(i, 1);
+                                break;
                             }
-                            // Leave every other recipe unchanged
-                            return recipe;
-                        })
-                }
+                        }
+
+                    } else {
+                        newMealPlan.push(recipe);
+                    }
+                })
+
+                return { ...state, recipes: newMealPlan };
             }
 
         case 'TOGGLE_MEAL_LOCK':
