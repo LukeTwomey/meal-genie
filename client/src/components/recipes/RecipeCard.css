@@ -19,9 +19,13 @@ h2 {
     line-height: 1em;
 }
 
-.iconContainer * {
-    color: #808080;
+.iconContainer .property {
     display: inline-block;
+}
+
+.iconContainer .property * {
+    display: inline-block;
+    color: #808080;
     font-size: 0.8em;
     margin-right: 0.5em;
 }
@@ -30,6 +34,6 @@ h2 {
     margin-right: 1.2em;
 }
 
-.iconContainer svg path{
+.iconContainer .property svg path{
     color: #a5b599;
 }

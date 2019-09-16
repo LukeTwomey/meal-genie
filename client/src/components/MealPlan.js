@@ -12,16 +12,19 @@ const Landing = (props) => {
     if (recipes === undefined || recipes.length === 0) {
         return <p>Touch the genie to create a new meal plan!</p>;
     } else {
-        return recipes.map((recipe, i) => {
-            return (
-                <div className='mealPlanCard' key={i}>
-                    <h1>{weekDays[i]}</h1>
-                    {/* <Toolbar id={i} /> */}
-                    <Toolbar id={recipe._id} locked={recipe.locked}/>
-                    <RecipeCard recipe={recipe} />
-                </div>
-            ) 
-        })
+        return (
+            <div className="mealPlan">
+                {recipes.map((recipe, i) => {
+                    return (
+                        <div className='mealPlanCard' key={i}>
+                            <h1>{weekDays[i]}</h1>
+                            <Toolbar id={recipe._id} locked={recipe.locked}/>
+                            <RecipeCard recipe={recipe} />
+                        </div>
+                    ) 
+                })}
+            </div>
+        )
     }
 }
 

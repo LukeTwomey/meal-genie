@@ -1,9 +1,25 @@
+.mealPlan {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1em;
+}
+
 .mealPlanCard {
     position: relative;
 }
 
 h1 {
     font-size: 1.3em;
+    margin-top: 0;
     margin-bottom: 0.3em;
     text-align: left;
+}
+
+.mealPlan .recipeCard {
+    margin-bottom: 0.5em;
+}
+
+
+.mealPlan .iconContainer .property {
+    display: block;
 }

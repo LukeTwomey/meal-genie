@@ -15,12 +15,18 @@ const RecipeCard = (props) => {
                 <RecipeImage image={recipe.image}/>
                 <h2>{recipe.name}</h2>
                 <div className="iconContainer">
-                    <FontAwesomeIcon icon={faAngel} />
-                    <p>{recipe.syns} {recipe.syns === 1 ? "syn" : "syns"}</p>
-                    <FontAwesomeIcon icon={faClock} />
-                    <p>{`${recipe.cookingTime} mins`}</p>
-                    <FontAwesomeIcon icon={faUserFriends} />
-                    <p>{`${recipe.servings} servings`}</p>
+                    <div className="property">
+                        <FontAwesomeIcon icon={faAngel} />
+                        <p>{recipe.syns} {recipe.syns === 1 ? "syn" : "syns"}</p>
+                    </div>
+                    <div className="property">
+                        <FontAwesomeIcon icon={faClock} />
+                        <p>{`${recipe.cookingTime} mins`}</p>
+                    </div>
+                    <div className="property">
+                        <FontAwesomeIcon icon={faUserFriends} />
+                        <p>{`${recipe.servings} servings`}</p>
+                    </div>
                 </div>
             </div>
         </Link>
