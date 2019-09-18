@@ -27,3 +27,8 @@ export const toggleMealLock = id => {
         dispatch({ type: 'TOGGLE_MEAL_LOCK', payload: { mealPlan, id }});
     }
 }
+
+export const toggleSearchModal = id => ({
+    type: 'TOGGLE_SEARCH_MODAL',
+    payload: id
+});
