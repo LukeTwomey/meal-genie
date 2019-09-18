@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { toggleSearchModal } from '../actions';
+import { sort } from '../helpers';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWindowClose } from '@fortawesome/pro-solid-svg-icons';
 import './SearchModal.css';
 
 const SearchModal = ({ recipes, toggleSearchModal, show }) => {
     const showHideClassName = show ? "modal display-block" : "modal display-none";
+    const sortedRecipes = sort(recipes, 'name');
 
     return (
         <div className={showHideClassName}>
@@ -17,7 +19,7 @@ const SearchModal = ({ recipes, toggleSearchModal, show }) => {
                         <FontAwesomeIcon icon={faWindowClose} /> 
                     </div>
                     <div className="recipeList">
-                        {recipes.map((recipe) => {
+                        {sortedRecipes.sort().map((recipe) => {
                             return (<p key={recipe._id}>{recipe.name}</p>)
                         })}
                     </div>

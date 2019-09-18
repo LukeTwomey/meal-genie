@@ -13,3 +13,17 @@ export const shuffle = (array) => {
 
     return array;
 }
+
+// Sort an array of objects by the 'key' value of your choosing
+// E.G. Sort array of recipes by 'name'
+export const sort = (array, key) => {
+    return array.sort((a, b) => {
+        if (a[key] < b[key]) {
+            return -1;
+        }
+        if (a[key] > b[key]) {
+            return 1;
+        }
+        return 0;
+    })
+}
