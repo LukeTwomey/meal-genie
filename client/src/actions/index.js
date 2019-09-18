@@ -20,11 +20,11 @@ export const planMeals = () => {
     }
 }
 
-export const toggleMealLock = id => {
+export const toggleMealLock = arrayIndex => {
     return (dispatch, getState) => {
         const state = getState();
         const mealPlan = state.mealPlan.recipes;
-        dispatch({ type: 'TOGGLE_MEAL_LOCK', payload: { mealPlan, id }});
+        dispatch({ type: 'TOGGLE_MEAL_LOCK', payload: { mealPlan, arrayIndex }});
     }
 }
 

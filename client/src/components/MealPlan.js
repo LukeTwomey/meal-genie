@@ -17,7 +17,7 @@ const Landing = (props) => {
                     return (
                         <div className='mealPlanCard' key={i}>
                             <h1>{weekDays[i]}</h1>
-                            <Toolbar id={recipe._id} locked={recipe.locked}/>
+                            <Toolbar id={recipe._id} arrayIndex={i} locked={recipe.locked}/>
                             <RecipeCard recipe={recipe} />
                         </div>
                     ) 

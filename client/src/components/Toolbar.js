@@ -6,11 +6,11 @@ import { faLockOpenAlt, faLockAlt, faSearch } from '@fortawesome/pro-solid-svg-i
 import './Toolbar.css';
 
 const Toolbar = (props) => {
-    const { id, locked, toggleMealLock, toggleSearchModal } = props;
+    const { id, arrayIndex, locked, toggleMealLock, toggleSearchModal } = props;
 
     return (
         <div className='toolbar'>
-            <div className='button' onClick={() => { toggleMealLock(id) }}>
+            <div className='button' onClick={() => { toggleMealLock(arrayIndex) }}>
             {locked === false || locked === undefined 
                 ? <FontAwesomeIcon icon={faLockOpenAlt} /> 
                 : <FontAwesomeIcon icon={faLockAlt} />}

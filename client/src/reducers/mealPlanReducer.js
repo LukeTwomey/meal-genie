@@ -47,9 +47,9 @@ export default (state = initialState, action) => {
         case 'TOGGLE_MEAL_LOCK':
             return { 
                 ...state, 
-                recipes: state.recipes.map((recipe) => {
+                recipes: state.recipes.map((recipe, index) => {
                     // Find the recipe with the matching id
-                    if(recipe._id === action.payload.id) {
+                    if(index === action.payload.arrayIndex) {
                         // Return a new object
                         return {
                             ...recipe,  // copy the existing recipe
