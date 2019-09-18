@@ -12,7 +12,7 @@
 	border-radius: 7px;
 	position: fixed;
 	background: white;
-	width: 80%;
+	width: 90%;
 	height: auto;
 	top: 50%;
 	left: 50%;
@@ -32,6 +32,10 @@
 	overflow: auto;
 }
 
+.modal-contents h1 {
+	margin-bottom: 0.75em;
+}
+
 .display-block {
 	display: block;
 }
@@ -40,15 +44,34 @@
 	display: none;
 }
 
-.modal .button {
+.modal-contents > .button {
 	background: none;
 	float: right;
-	font-size: 2em;
+	font-size: 1.5em;
 	position: fixed;
-    top: 0.2em;
-    right: 0.2em;
+    top: 0;
+    right: 0;
 }
 
 .modal .button path {
-	color: #808080;
+	color: #525252;
+}
+
+.recipeList .recipe {
+	border-bottom: 1px solid #808080;
+	margin-bottom: 0.3em;
+    padding-bottom: 0.2em;
+}
+
+.recipeList .name {
+	display: inline-block;
+	line-height: 2em;
+	width: 87%;
+	vertical-align: top;
+}
+
+.recipeList .select {
+	color: #72a9e1;
+	cursor: pointer;
+	font-size: 2em;
 }

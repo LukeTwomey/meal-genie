@@ -61,6 +61,21 @@ export default (state = initialState, action) => {
                     return recipe;
                 })
             }
+
+        case 'REPLACE_RECIPE':
+            const newRecipe = action.payload.recipes.filter(recipe => recipe._id === action.payload.newRecipe)[0];
+
+            return { 
+                ...state, 
+                recipes: state.recipes.map((recipe) => {
+                    if(recipe._id === action.payload.currentRecipe) {
+                        return {
+                            ...newRecipe,
+                        }
+                    }
+                    return recipe;
+                })
+            }
         default:
             return state;
     }

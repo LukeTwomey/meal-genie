@@ -32,3 +32,14 @@ export const toggleSearchModal = id => ({
     type: 'TOGGLE_SEARCH_MODAL',
     payload: id
 });
+
+export const replaceMealPlanRecipe = id => {
+    return (dispatch, getState) => {
+        const state = getState();
+        const recipes = state.recipes;
+        const currentRecipe = state.searchModal.activeRecipeId;
+        const newRecipe = id;
+        dispatch({ type: 'REPLACE_RECIPE', payload: { recipes, currentRecipe, newRecipe }});
+        dispatch({ type: 'TOGGLE_SEARCH_MODAL', payload: { id: null }});
+    }
+}
