@@ -5,7 +5,9 @@ import Toolbar from './Toolbar';
 import './MealPlan.css';
 
 const Landing = (props) => {
+    
     const recipes = props.mealPlan.recipes;
+    console.log(recipes);
     const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
     if (recipes === undefined || recipes.length === 0) {
