@@ -18,7 +18,7 @@ const IngredientInputs = (props) => {
           />
           <label htmlFor={quantityId}>Quantity</label>
           <input
-            type="text"
+            type="number"
             name={quantityId}
             data-id={i}
             id={quantityId}

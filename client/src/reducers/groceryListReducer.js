@@ -12,7 +12,12 @@ export default (state = [], action) => {
                         let index = groceryList.findIndex((groceryListItem) => {
                             return groceryListItem.ingredient === ingredient.ingredient;
                         })
-                        groceryList[index].quantity += ingredient.quantity;
+                        // console.log(groceryList[index].quantity);
+                        // console.log(ingredient.quantity);
+                        // console.log(parseFloat(groceryList[index].quantity));
+                        // console.log(parseFloat(ingredient.quantity));
+                        // groceryList[index].quantity += ingredient.quantity;
+                        groceryList[index].quantity = parseFloat(groceryList[index].quantity) + parseFloat(ingredient.quantity);
                     } else {
                         // Need to use spread to clone the object getting pushed to the array
                         // otherwise updating it will also affect the original mealPlan array, due to reference
@@ -20,6 +25,8 @@ export default (state = [], action) => {
                     }
                 })
             });
+
+            console.log(groceryList);
 
             return groceryList;
         default:

@@ -51,7 +51,6 @@ export const replaceMealPlanRecipe = id => {
         const state = getState();
         const recipes = state.recipes;
         const currentRecipe = state.searchModal.activeArrayIndex;
-        console.log(currentRecipe);
         const newRecipe = id;
         dispatch({ type: 'REPLACE_RECIPE', payload: { recipes, currentRecipe, newRecipe }});
         dispatch({ type: 'TOGGLE_SEARCH_MODAL', payload: { id: null }});
