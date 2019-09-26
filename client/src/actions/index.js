@@ -12,11 +12,24 @@ export const setLoadingStatus = boolean => ({
     payload: boolean
 });
 
+export const clearGroceryList = () => ({
+    type: 'CLEAR_GROCERY_LIST'
+});
+
+export const createGroceryList = () => {
+    return (dispatch, getState) => {
+        const state = getState();
+        const mealPlan = state.mealPlan;
+        dispatch({ type: 'CREATE_GROCERY_LIST', payload: mealPlan });
+    }
+}
+
 export const planMeals = () => {
     return (dispatch, getState) => {
         const state = getState();
         const recipes = state.recipes;
         dispatch({ type: 'PLAN_MEALS', payload: recipes });
+        dispatch(clearGroceryList());
     }
 }
 
@@ -41,5 +54,6 @@ export const replaceMealPlanRecipe = id => {
         const newRecipe = id;
         dispatch({ type: 'REPLACE_RECIPE', payload: { recipes, currentRecipe, newRecipe }});
         dispatch({ type: 'TOGGLE_SEARCH_MODAL', payload: { id: null }});
+        dispatch(clearGroceryList());
     }
 }

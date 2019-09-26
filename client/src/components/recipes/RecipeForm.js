@@ -13,7 +13,7 @@ export default class RecipeForm extends Component {
         servings: '',
         description: '',
         syns: '',
-        ingredients: [{ingredient: '', quantity: '', unit: ''}],
+        ingredients: [{ingredient: '', quantity: 0, unit: ''}],
         method: [{step: ''}],
         image: null
     }
@@ -79,7 +79,7 @@ export default class RecipeForm extends Component {
     addIngredient = (e) => {
         e.preventDefault();
         this.setState((prevState) => ({
-          ingredients: [...prevState.ingredients, {ingredient:'', quantity:'', unit:''}]
+          ingredients: [...prevState.ingredients, {ingredient:'', quantity:0, unit:''}]
         }));
     }
 
