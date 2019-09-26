@@ -41,16 +41,17 @@ export const toggleMealLock = arrayIndex => {
     }
 }
 
-export const toggleSearchModal = id => ({
+export const toggleSearchModal = arrayIndex => ({
     type: 'TOGGLE_SEARCH_MODAL',
-    payload: id
+    payload: arrayIndex
 });
 
 export const replaceMealPlanRecipe = id => {
     return (dispatch, getState) => {
         const state = getState();
         const recipes = state.recipes;
-        const currentRecipe = state.searchModal.activeRecipeId;
+        const currentRecipe = state.searchModal.activeArrayIndex;
+        console.log(currentRecipe);
         const newRecipe = id;
         dispatch({ type: 'REPLACE_RECIPE', payload: { recipes, currentRecipe, newRecipe }});
         dispatch({ type: 'TOGGLE_SEARCH_MODAL', payload: { id: null }});

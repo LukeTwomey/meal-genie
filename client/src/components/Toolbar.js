@@ -6,7 +6,7 @@ import { faLockOpenAlt, faLockAlt, faSearch } from '@fortawesome/pro-solid-svg-i
 import './Toolbar.css';
 
 const Toolbar = (props) => {
-    const { id, arrayIndex, locked, toggleMealLock, toggleSearchModal } = props;
+    const { arrayIndex, locked, toggleMealLock, toggleSearchModal } = props;
 
     return (
         <div className='toolbar'>
@@ -15,7 +15,7 @@ const Toolbar = (props) => {
                 ? <FontAwesomeIcon icon={faLockOpenAlt} /> 
                 : <FontAwesomeIcon icon={faLockAlt} />}
             </div>
-            <div className='button' onClick={() => { toggleSearchModal(id) }}>
+            <div className='button' onClick={() => { toggleSearchModal(arrayIndex) }}>
                 <FontAwesomeIcon icon={faSearch} /> 
             </div>
         </div>

@@ -1,10 +1,10 @@
-export default (state = { show: false, activeRecipeId: null }, action) => {
+export default (state = { show: false, activeArrayIndex: null }, action) => {
     switch (action.type) {
         case 'TOGGLE_SEARCH_MODAL':
             return {
                 ...state,
                 show: !state.show,
-                activeRecipeId: action.payload
+                activeArrayIndex: action.payload
             };
         default:
             return state;

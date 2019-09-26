@@ -67,8 +67,8 @@ export default (state = initialState, action) => {
 
             return { 
                 ...state, 
-                recipes: state.recipes.map((recipe) => {
-                    if(recipe._id === action.payload.currentRecipe) {
+                recipes: state.recipes.map((recipe, i) => {
+                    if(i === action.payload.currentRecipe) {
                         return {
                             ...newRecipe,
                         }
