@@ -21,7 +21,10 @@ const GroceryList = (props) => {
                 {groceryList.map((groceryListItem, i) => {
                     return (
                         <li className='groceryListItem' key={i}>
-                            <p>{groceryListItem.quantity}{groceryListItem.unit} {groceryListItem.ingredient}</p>
+                            <p>
+                                {groceryListItem.quantity !== 'Nan' ? groceryListItem.quantity : null}
+                                {groceryListItem.unit} {groceryListItem.ingredient}
+                            </p>
                         </li>
                     )
                 })}

@@ -20,6 +20,7 @@
     "@fortawesome/pro-regular-svg-icons": "^5.9.0",
     "@fortawesome/pro-solid-svg-icons": "^5.9.0",
     "@fortawesome/react-fontawesome": "^0.1.4",
+    "clone-deep": "^4.0.1",
     "concurrently": "^4.1.0",
     "express": "^4.17.1",
     "mongoose": "^5.6.0",
@@ -29,6 +30,7 @@
     "redux": "^4.0.4",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
-    "sharp": "^0.22.1"
+    "sharp": "^0.22.1",
+    "typescript": "^3.6.3"
   }
 }
