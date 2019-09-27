@@ -12,11 +12,6 @@ export default (state = [], action) => {
                         let index = groceryList.findIndex((groceryListItem) => {
                             return groceryListItem.ingredient === ingredient.ingredient;
                         })
-                        // console.log(groceryList[index].quantity);
-                        // console.log(ingredient.quantity);
-                        // console.log(parseFloat(groceryList[index].quantity));
-                        // console.log(parseFloat(ingredient.quantity));
-                        // groceryList[index].quantity += ingredient.quantity;
                         groceryList[index].quantity = parseFloat(groceryList[index].quantity) + parseFloat(ingredient.quantity);
                     } else {
                         // Need to use spread to clone the object getting pushed to the array
@@ -25,8 +20,6 @@ export default (state = [], action) => {
                     }
                 })
             });
-
-            console.log(groceryList);
 
             return groceryList;
         default:
