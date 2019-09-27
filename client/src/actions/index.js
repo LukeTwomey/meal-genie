@@ -46,6 +46,10 @@ export const toggleSearchModal = arrayIndex => ({
     payload: arrayIndex
 });
 
+export const toggleShareModal = () => ({
+    type: 'TOGGLE_SHARE_MODAL'
+});
+
 export const replaceMealPlanRecipe = id => {
     return (dispatch, getState) => {
         const state = getState();
