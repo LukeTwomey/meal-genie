@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShare } from '@fortawesome/pro-solid-svg-icons';
 import RecipeCard from './recipes/RecipeCard';
 import Toolbar from './Toolbar';
 import './MealPlan.css';
@@ -23,6 +25,9 @@ const Landing = (props) => {
                         </div>
                     ) 
                 })}
+                <div className='shareButton' onClick={() => { console.log("Yup") }}>
+                    <FontAwesomeIcon icon={faShare} /> 
+                </div>
             </div>
         )
     }

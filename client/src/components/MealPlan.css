@@ -23,3 +23,19 @@ h1 {
 .mealPlan .iconContainer .property {
     display: block;
 }
+
+.shareButton {
+    font-size: 1.4em;
+    line-height: 50px;
+    text-align: center;
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border: 1px solid #f2f2f2;
+    color: #72a9e1;
+    border-radius: 50%;
+    bottom: 3.3em;
+    right: 1em;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 2px 4px 6px rgba(0,0,0,0.23);
+}
