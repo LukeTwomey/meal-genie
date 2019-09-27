@@ -40,6 +40,7 @@ ul li {
 }
 
 input {
+	-webkit-appearance: none;
 	background: #ececec;
 	border-radius: 5px;
 	color: #525252;

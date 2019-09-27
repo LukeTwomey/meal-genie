@@ -3,6 +3,7 @@
 }
 
 .formButtons input {
+    -webkit-appearance: none;
     cursor: pointer;
     color: #fff;
     width: 49%;
