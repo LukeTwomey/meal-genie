@@ -24,10 +24,10 @@ $ npm install
 
 ### Running the app in development
 
-To run the app in development
+To run the app in development, you need to get the fontawesome auth token and insert it into the following npm script
 
 ```sh
-$ npm run dev
+$ FONTAWESOME_NPM_AUTH_TOKEN=[insert token here] npm run dev
 ```
 
 ### Connecting a development database

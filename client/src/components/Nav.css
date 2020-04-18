@@ -1,0 +1,68 @@
+nav {
+    background: #fff;
+    position: fixed;
+    bottom: 0;
+    height: 40px;
+    padding: 0.5em 0;
+    width: 100%;
+    z-index: 100;
+}
+
+nav a {
+    width: 60px;
+}  
+
+.logo{
+    cursor: pointer;
+    width: 50px;
+    display: block;
+    margin: auto;
+    position: relative;
+    bottom: 32px;
+}
+
+.emptyIcon,
+.solidIcon {
+    color: #808080;
+    font-size: 1.5em;
+}
+
+nav a.selected .emptyIcon,
+nav a .solidIcon {
+    display: none;
+}
+
+nav a.selected .solidIcon {
+    color: #72a9e1;
+    display: inline;
+}
+
+.recipeIcon,
+.mealPlanIcon,
+.groceryListIcon {
+    color: #808080;
+    position: absolute;
+    bottom: 0.45em;
+    text-align: center;
+}
+
+.recipeIcon p,
+.mealPlanIcon p,
+.groceryListIcon p {
+    font-size: 0.7em;
+    line-height: 1em;
+    margin-top: 0.2em;
+}
+
+.recipeIcon {
+    left: 0.2em;
+}
+
+.mealPlanIcon {
+    left: 3.9em;
+}
+
+.groceryListIcon {
+    right: 3.9em;
+    width: 70px;
+}

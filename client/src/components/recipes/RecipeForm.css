@@ -1,0 +1,22 @@
+label {
+    display: block;
+    margin-bottom: 1em;
+}
+
+input {
+    display: block;
+}
+
+#imageUploadLabel {
+    border: 1px solid grey;
+    text-align: center;
+    width: 100px;
+}
+
+#imageUpload {
+    opacity: 0;
+}
+
+#imagePreview img {
+    width: 150px;
+}

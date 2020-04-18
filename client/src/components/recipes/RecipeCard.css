@@ -1,0 +1,39 @@
+.recipeCard {
+    margin-bottom: 1.5em;
+}
+
+.recipeImage {
+    border-radius: 7px;
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: 150px;
+}
+
+h2 {
+    font-size: 1.1em;
+    margin: 0.2em 0 0;
+}
+
+.iconContainer {
+    line-height: 1em;
+}
+
+.iconContainer .property {
+    display: inline-block;
+}
+
+.iconContainer .property * {
+    display: inline-block;
+    color: #808080;
+    font-size: 0.8em;
+    margin-right: 0.5em;
+}
+
+.iconContainer p {
+    margin-right: 1.2em;
+}
+
+.iconContainer .property svg path{
+    color: #a5b599;
+}

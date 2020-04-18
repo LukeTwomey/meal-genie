@@ -10,7 +10,10 @@ const recipeSchema = new Schema({
     syns: Number,
     ingredients: Array,
     method: Array,
-    nutrition: Array
+    image: {
+        data: Buffer,
+        contentType: String
+    }
 })
 
 mongoose.model('recipe', recipeSchema);

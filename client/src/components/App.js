@@ -1,33 +1,57 @@
-import React from 'react';
-import { BrowserRouter, Route} from 'react-router-dom';
-import Landing from './Landing';
-import Test from './Test';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { fetchRecipes } from '../actions';
+import ScrollToTop from './ScrollToTop';
+import SearchModal from './SearchModal';
+import ShareModal from './ShareModal';
+import Nav from './Nav';
+import MealPlan from './MealPlan';
+import Recipes from './recipes/Recipes';
+import RecipeDetail from './recipes/RecipeDetail';
+import RecipeNew from './recipes/RecipeNew';
+import GroceryList from './GroceryList';
 import './App.css';
 
-class App extends React.Component {
-  state = {
-    apiGreeting: null
-  }
-  
-  componentDidMount = async () => {
-    const serverHandshake = await fetch('/api/test') 
-    const json = await serverHandshake.json()
-    this.setState({
-      apiGreeting: json.greeting
-    })
-  }
+class App extends Component {
+	componentDidMount() {
+		this.props.fetchRecipes();
+	}
 
-  render() {
-    return (
-      <BrowserRouter>
-        <div>
-          {this.state.apiGreeting}
-            <Route path="/" exact component={Landing} />
-            <Route path="/test" exact component={Test} />
-        </div>
-      </BrowserRouter>
-    );
-  }
+	render () {
+		return (
+			<BrowserRouter>
+				<ScrollToTop>
+				<div className='container'>
+					<Nav />
+					<div className='pageContent'>
+						
+						<Route path="/" exact component={MealPlan} />
+						
+						<Switch>
+							<Route path="/recipes" exact component={Recipes} />
+							<Route path="/recipes/new" exact component={RecipeNew} />
+							<Route path="/recipes/:name" exact component={RecipeDetail} />
+						</Switch>
+						<Route path="/grocery-list" exact component={GroceryList} />
+						<SearchModal />
+						<ShareModal />
+					</div>
+				</div>
+				</ScrollToTop>
+			</BrowserRouter>
+		);
+	}
 }
 
-export default App;
+const mapStateToProps = (state) => {
+    return { 
+        recipes: state.recipes,
+        loading: state.loading 
+    };
+}
+
+export default connect(
+    mapStateToProps, 
+    { fetchRecipes }
+)(App);

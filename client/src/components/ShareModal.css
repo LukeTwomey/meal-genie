@@ -1,0 +1,22 @@
+.modal-main.shareModal {
+    height: 265px;
+}
+
+.formButtons input {
+    -webkit-appearance: none;
+    cursor: pointer;
+    color: #fff;
+    width: 49%;
+    float: left;
+    margin: 0;
+}
+
+.formButtons input[type=button] {
+    background: #c71717;
+    margin-right: 1%;
+}
+
+.formButtons input[type=submit] {
+    background: #72a9e1;
+    margin-left: 1%;
+}
