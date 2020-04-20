@@ -24,6 +24,24 @@ Open that file and replace "FONT-AWESOME-AUTH-TOKEN-GOES-HERE" with the actual F
 //npm.fontawesome.com/:_authToken=XXXXXXXX-YYYY-ZZZZ-AAAA-BBBBBBBBBBBB
 ```
 
+In order to successfully connect to the remote MongoDB, you will need to duplicate the config/dev.js.example file (still within the config folder), and name it as follows:
+
+```sh
+dev.js
+```
+
+Open that file and replace "password" with the password of the admin account with access to the meal-genie-development database. The contents of dev.js should look something like:
+
+```sh
+module.exports = {
+    mongoURI: 'mongodb+srv://admin:x92hgurtcslg58ch@cluster0-pvd0l.mongodb.net/meal-genie-development?retryWrites=true&w=majority'
+}
+```
+
+In addition to adding the password to gain access to the MongoDB database, you also need to whitelist your external IP in the MongoDB settings.
+
+Log into MongoDB and open the meal-genie-development project. Go to Network Access (under Security on the left hand side of the screen), and add in your external IP address to the IP whitelist in order for MongoDB to grant you access when establishing the connection.
+
 ### Running the app in development
 
 To run the app in development:
