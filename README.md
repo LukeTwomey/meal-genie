@@ -1,33 +1,35 @@
-# react-node-boilerplate
 
-react-node-boilerplate allows you to easily create a new project from scratch with minimal setup, getting you coding quicker!
+# Meal Genie
 
 ### Installation
 
-Run the following inside your projects directory to clone the boilerplate, replacing \<project-name> with the name of your project E.G. todo-list or music-player
-
-```sh
-$ git clone https://github.com/LukeTwomey/react-node-boilerplate <project-name>
-```
-
-Change into the project directory that was just created E.G. todo-list or music-player
-
-```sh
-$ cd <project-name>
-```
-
-Install the required dependencies
+Clone the repo and run the following command at the root of the project:
 
 ```sh
 $ npm install
 ```
 
-### Running the app in development
+### Configuration
 
-To run the app in development, you need to get the fontawesome auth token and insert it into the following npm script
+In order to integrate with Font Awesome Pro, you will need to duplicate the .npmrc.sample file in the root of the project, and name it as follows:
 
 ```sh
-$ FONTAWESOME_NPM_AUTH_TOKEN=[insert token here] npm run dev
+.npmrc
+```
+
+Open that file and replace "FONT-AWESOME-AUTH-TOKEN-GOES-HERE" with the actual Font Awesome Pro auth token. This can be found by logging into the Font Awesome account and going to settings. The contents of .npmrc should look something like:
+
+```sh
+@fortawesome:registry=https://npm.fontawesome.com/
+//npm.fontawesome.com/:_authToken=XXXXXXXX-YYYY-ZZZZ-AAAA-BBBBBBBBBBBB
+```
+
+### Running the app in development
+
+To run the app in development:
+
+```sh
+npm run dev
 ```
 
 ### Connecting a development database
