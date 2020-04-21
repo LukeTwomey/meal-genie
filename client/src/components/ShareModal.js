@@ -12,12 +12,18 @@ class ShareModal extends Component {
         emailAddress: '',
     }
 
+    resetForm = () => {
+        this.setState({ emailAddress: '' });
+        this.props.toggleShareModal(null);
+    }
+
     handleChange = e => {
         this.setState({ emailAddress: e.target.value });
     };
     
     handleSubmit = async e => {
         e.preventDefault();
+        this.resetForm();
         const { recipes } = this.props.mealPlan
         const weekdays = [{day: 'Monday'}, {day: 'Tuesday'}, {day: 'Wednesday'}, {day: 'Thursday'}, {day: 'Friday'}, {day: 'Saturday'}, {day: 'Sunday'}];
         const mealPlan = weekdays.map((day, i) => ({...day, recipe: recipes[i].name}));
@@ -44,7 +50,7 @@ class ShareModal extends Component {
                 <p>To email a copy of the meal plan, enter the email address in the field below and click "Send"</p>
 
                 <form onSubmit={this.handleSubmit}>
-                    <input name="Email Address" type="text" onChange={this.handleChange}/>
+                    <input name="Email Address" type="text" onChange={this.handleChange} value={this.state.emailAddress}/>
                     <div className="formButtons">
                     <input type="button" value="Cancel" onClick={() => { toggleShareModal(null); }} />
                     <input type="submit" value="Send" />
