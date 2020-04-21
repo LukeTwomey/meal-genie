@@ -7,6 +7,10 @@ const Recipe = mongoose.model('recipe');
 
 module.exports = app => {
 
+    app.post('/api/shareMealPlan', async (req, res) => {
+        console.log(req.body.emailAddress);
+    })
+
     // Get all recipes from the database
     app.get('/api/recipes', async (req, res) => {
         const recipes = await Recipe.find();
