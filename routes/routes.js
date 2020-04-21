@@ -9,6 +9,7 @@ module.exports = app => {
 
     app.post('/api/shareMealPlan', async (req, res) => {
         console.log(req.body.emailAddress);
+        console.log(req.body.mealPlan);
     })
 
     // Get all recipes from the database

@@ -13,15 +13,17 @@ class ShareModal extends Component {
     }
 
     handleChange = e => {
-        console.log(e.target);
         this.setState({ emailAddress: e.target.value });
-        console.log(this.state);
     };
     
     handleSubmit = async e => {
         e.preventDefault();
+        const { recipes } = this.props.mealPlan
+        const weekdays = [{day: 'Monday'}, {day: 'Tuesday'}, {day: 'Wednesday'}, {day: 'Thursday'}, {day: 'Friday'}, {day: 'Saturday'}, {day: 'Sunday'}];
+        const mealPlan = weekdays.map((day, i) => ({...day, recipe: recipes[i].name}));
         const formData = {
-            emailAddress: this.state.emailAddress
+            emailAddress: this.state.emailAddress,
+            mealPlan: mealPlan
         };
         const res = await axios.post('/api/shareMealPlan', formData);
         console.log(res.data);
@@ -57,8 +59,12 @@ class ShareModal extends Component {
     };
 };
 
-const mapStateToProps = (state) => ({
-  show: state.shareModal.show,
-});
+const mapStateToProps = (state) => {
+    return { 
+        mealPlan: state.mealPlan,
+        show: state.shareModal.show,
+    };
+}
+
 
 export default connect(mapStateToProps, { toggleShareModal })(ShareModal);
