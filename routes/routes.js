@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
+const keys = require('../config/keys');
 const fs = require('fs');
+const nodemailer = require('nodemailer');
 const optimise = require('../services/imageOptimise');
 const multer  = require('multer');
 const upload = multer({ dest: 'uploads/' })
@@ -8,8 +10,34 @@ const Recipe = mongoose.model('recipe');
 module.exports = app => {
 
     app.post('/api/shareMealPlan', async (req, res) => {
-        console.log(req.body.emailAddress);
-        console.log(req.body.mealPlan);
+        let transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: keys.gmailUser,
+                pass: keys.gmailPassword
+            }
+        });
+
+        let emailContent = '<ul>';
+        for (const meal of req.body.mealPlan){
+            emailContent+=`<li>${meal.day} - ${meal.recipe}</li>`
+        }
+        emailContent += '</ul>';
+
+        let mailOptions = {
+            from: keys.gmailUser,
+            to: req.body.emailAddress,
+            subject: 'Meal Genie - Mealplan',
+            html: emailContent
+        };
+
+        transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+              console.log(error);
+            } else {
+              console.log('Email sent: ' + info.response);
+            }
+        });
     })
 
     // Get all recipes from the database

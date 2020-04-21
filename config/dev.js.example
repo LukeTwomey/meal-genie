@@ -1,5 +1,7 @@
 module.exports = {
-    mongoURI: 'mongodb+srv://admin:password@cluster0-pvd0l.mongodb.net/meal-genie-development?retryWrites=true&w=majority'
+    mongoURI: 'mongodb+srv://admin:password@cluster0-pvd0l.mongodb.net/meal-genie-development?retryWrites=true&w=majority',
+    gmailUser: 'userhere@gmail.com',
+    gmailPassword: 'gmailSpecificAppPasswordHere'
 }
 
 
