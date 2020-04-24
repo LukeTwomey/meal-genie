@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import formFields from './formFields';
-import IngredientInputs from "./IngredientInputs"
-import MethodInputs from "./MethodInputs"
+import IngredientInputs from "./IngredientInputs";
+import MethodInputs from "./MethodInputs";
 import './RecipeForm.css'
 
 export default class RecipeForm extends Component {
@@ -84,6 +84,14 @@ export default class RecipeForm extends Component {
         }));
     }
 
+    deleteIngredient = (e) => {
+        e.preventDefault();
+        const deletedIngredientIndex = e.target.dataset.id;
+        this.setState((prevState) => ({
+          ingredients: prevState.ingredients.filter((ingredient, i) => i !== parseInt(deletedIngredientIndex))
+        }));
+    }
+
     addStep = (e) => {
         e.preventDefault();
         this.setState((prevState) => ({
@@ -119,8 +127,10 @@ export default class RecipeForm extends Component {
                     <div id="imagePreview"></div>
                     {this.renderStaticFields()}
                     <label>Ingredients</label>
-                    <IngredientInputs ingredients={ingredients} onChange={this.handleChange}/>
-                    <button onClick={this.addIngredient} id="addIngredientButton">Add new ingredient</button>
+                    <div className="ingredients">
+                        <IngredientInputs ingredients={ingredients} onChange={this.handleChange} deleteIngredient={this.deleteIngredient}/>
+                    </div>
+                    <button onClick={this.addIngredient} id="addIngredientButton">Add another ingredient</button>
                     <button onClick={this.addStep}>Add step</button>
                     <MethodInputs method={method} onChange={this.handleChange}/>
                     <input type="submit" value="Submit" />

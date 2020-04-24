@@ -31,24 +31,41 @@
     width: 100%;
 }
 
+.addNewRecipeForm .ingredients fieldset {
+    margin-top: 0;
+    width: 87%;
+}
+
 .addNewRecipeForm .ingredients input {
     background: #fff;
 }
 
-.quantity,
-.unit {
+.quantityContainer,
+.unitContainer {
     float: left;
     width: 48%;
 }
 
-.quantity {
+.quantityContainer {
     margin-right: 2%;
 }
 
-.unit {
+.unitContainer {
     margin-left: 2%;
 }
 
 .addNewRecipeForm #addIngredientButton {
     margin-top: 0;
+}
+
+.ingredientContainer {
+    display: flex;
+    align-items: center;
+}
+
+.deleteButton {
+    color: #c71717;
+    cursor: pointer;
+    font-size: 1.5em;
+    margin-left: auto;
 }
