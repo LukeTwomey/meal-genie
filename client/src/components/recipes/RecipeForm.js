@@ -64,14 +64,15 @@ export default class RecipeForm extends Component {
     renderStaticFields = () => {
         return formFields.map(({ name, label, type }) => {
             return (
-                <label key={name}>
-                    {label}
+                <div className="formInput" key={name}>
+                    <label htmlFor={name}>{label}</label>
                     <input
-                        name={name}
-                        type={type}
-                        value={this.state[name]}
-                        onChange={this.handleChange} />
-                </label>
+                    id={name}
+                    name={name}
+                    type={type}
+                    value={this.state[name]}
+                    onChange={this.handleChange} />
+                </div>
             );
         });
     }
@@ -112,13 +113,14 @@ export default class RecipeForm extends Component {
 
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="imageUpload" id="imageUploadLabel">Add Image</label>
+                <form className="addNewRecipeForm" onSubmit={this.handleSubmit}>
+                    <label htmlFor="imageUpload" id="imageUploadLabel">Add image</label>
                     <input type="file" id="imageUpload" accept=".jpg, .jpeg, .png" onChange={this.addImage} />
                     <div id="imagePreview"></div>
                     {this.renderStaticFields()}
-                    <button onClick={this.addIngredient}>Add new ingredient</button>
+                    <label>Ingredients</label>
                     <IngredientInputs ingredients={ingredients} onChange={this.handleChange}/>
+                    <button onClick={this.addIngredient} id="addIngredientButton">Add new ingredient</button>
                     <button onClick={this.addStep}>Add step</button>
                     <MethodInputs method={method} onChange={this.handleChange}/>
                     <input type="submit" value="Submit" />

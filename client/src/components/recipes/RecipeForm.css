@@ -1,22 +1,54 @@
-label {
+.addNewRecipeForm label {
     display: block;
-    margin-bottom: 1em;
+    margin-bottom: 0.1em;
 }
 
-input {
+.addNewRecipeForm input {
     display: block;
+    margin: 0 0 0.8em 0;
 }
 
-#imageUploadLabel {
-    border: 1px solid grey;
+.addNewRecipeForm #imageUploadLabel,
+.addNewRecipeForm #addIngredientButton {
+    background: #72a9e1;
+    color: #fff;
+    cursor: pointer;
     text-align: center;
-    width: 100px;
 }
 
 #imageUpload {
-    opacity: 0;
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute !important;
+    white-space: nowrap;
+    width: 1px; 
 }
 
 #imagePreview img {
-    width: 150px;
+    width: 100%;
+}
+
+.addNewRecipeForm .ingredients input {
+    background: #fff;
+}
+
+.quantity,
+.unit {
+    float: left;
+    width: 48%;
+}
+
+.quantity {
+    margin-right: 2%;
+}
+
+.unit {
+    margin-left: 2%;
+}
+
+.addNewRecipeForm #addIngredientButton {
+    margin-top: 0;
 }
