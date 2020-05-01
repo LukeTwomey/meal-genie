@@ -99,6 +99,14 @@ export default class RecipeForm extends Component {
         }));
     }
 
+    deleteStep = (e) => {
+        e.preventDefault();
+        const deletedStepIndex = e.target.dataset.id;
+        this.setState((prevState) => ({
+          method: prevState.method.filter((step, i) => i !== parseInt(deletedStepIndex))
+        }));
+    }
+
     addImage = () => {
         const fileInput = document.getElementById('imageUpload');
         const preview = document.getElementById('imagePreview');
@@ -131,8 +139,11 @@ export default class RecipeForm extends Component {
                         <IngredientInputs ingredients={ingredients} onChange={this.handleChange} deleteIngredient={this.deleteIngredient}/>
                     </div>
                     <button onClick={this.addIngredient} id="addIngredientButton">Add another ingredient</button>
-                    <button onClick={this.addStep}>Add step</button>
-                    <MethodInputs method={method} onChange={this.handleChange}/>
+                    <label>Method</label>
+                    <div className="method">
+                        <MethodInputs method={method} onChange={this.handleChange} deleteStep={this.deleteStep}/>
+                    </div>
+                    <button onClick={this.addStep} id="addStepButton">Add another step</button>
                     <input type="submit" value="Submit" />
                 </form>
             </div>

@@ -42,7 +42,9 @@ ul li {
 input,
 #imageUploadLabel,
 #addIngredientButton,
-fieldset {
+#addStepButton,
+fieldset,
+textarea {
 	-webkit-appearance: none;
 	background: #ececec;
 	border-radius: 5px;
