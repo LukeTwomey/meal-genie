@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit } from '@fortawesome/pro-regular-svg-icons';
 import RecipeImage from './RecipeImage';
 import Loading from '../Loading/Loading';
 import './RecipeDetail.css';
@@ -33,7 +35,7 @@ const RecipeDetail = (props) => {
                 </div>
                 <h2>{recipe.name}</h2>
                 <div className='recipeText'>
-                    {/* <h2>{recipe.name}</h2> */}
+                    <FontAwesomeIcon icon={faEdit} className='edit' onClick={() => { console.log("hi") }}/>
                     <p>{recipe.description}</p>
                     <p>Rating: {recipe.rating}</p>
                     <p>Cooking Time: {recipe.cookingTime}</p>
