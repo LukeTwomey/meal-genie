@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from "react-router-dom";
 import axios from 'axios';
 import formFields from './formFields';
 import IngredientInputs from "./IngredientInputs";
+import { fetchRecipes } from '../../actions';
 import MethodInputs from "./MethodInputs";
 import './RecipeForm.css'
 
-export default class RecipeForm extends Component {
+class RecipeForm extends Component {
     state = {
         name: '',
         rating: '',
@@ -15,7 +18,8 @@ export default class RecipeForm extends Component {
         syns: '',
         ingredients: [{ingredient: '', quantity: 0, unit: ''}],
         method: [{step: ''}],
-        image: null
+        image: null,
+        redirect: null
     }
 
     handleChange = e => {
@@ -56,9 +60,9 @@ export default class RecipeForm extends Component {
 
         // Set up the config to tell axios that this is a multipart post request (text and image/file)
         const config = { headers: {'content-type': 'multipart/form-data'} }
-        const res = await axios.post('/api/recipes', formData, config);
-        console.log(res.data);
+        await axios.post('/api/recipes', formData, config);
         this.props.fetchRecipes();
+        this.setState({ redirect: "/recipes" });
     }
 
     renderStaticFields = () => {
@@ -125,8 +129,10 @@ export default class RecipeForm extends Component {
     }
 
     render() {
-        const {ingredients, method} = this.state
-
+        const {ingredients, method, redirect} = this.state
+        if (redirect) {
+            return <Redirect to={redirect} />
+        }
         return (
             <div>
                 <form className="addNewRecipeForm" onSubmit={this.handleSubmit}>
@@ -144,9 +150,20 @@ export default class RecipeForm extends Component {
                         <MethodInputs method={method} onChange={this.handleChange} deleteStep={this.deleteStep}/>
                     </div>
                     <button onClick={this.addStep} id="addStepButton">Add another step</button>
-                    <input type="submit" value="Submit" />
+                    <input type="submit" value="Add recipe" className="submit"/>
                 </form>
             </div>
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return { 
+        recipes: state.recipes
+    };
+}
+
+export default connect(
+    mapStateToProps, 
+    { fetchRecipes }
+)(RecipeForm);

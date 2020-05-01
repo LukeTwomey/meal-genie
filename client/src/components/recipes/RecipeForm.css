@@ -61,6 +61,12 @@
     margin-top: 0;
 }
 
+.addNewRecipeForm .submit {
+    color: #fff;
+    cursor: pointer;
+    background: #a5b599;
+}
+
 .ingredientContainer,
 .methodContainer {
     display: flex;
