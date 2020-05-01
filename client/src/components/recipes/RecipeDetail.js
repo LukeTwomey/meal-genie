@@ -42,7 +42,7 @@ const RecipeDetail = (props) => {
                     <h3>Ingredients</h3>
                     <ul>{ingredients}</ul>
                     <h3>Method</h3>
-                    <ul>{method}</ul>
+                    <ol>{method}</ol>
                 </div>
             </div>
             </div>
