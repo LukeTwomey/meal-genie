@@ -101,7 +101,3 @@ select:focus {
 select option {
 	font-weight:normal;
 }
-
-svg {
-    pointer-events: none;
-}
