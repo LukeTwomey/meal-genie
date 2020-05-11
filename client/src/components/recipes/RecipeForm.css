@@ -1,85 +1,85 @@
 .addNewRecipeForm label {
-    display: block;
-    margin-bottom: 0.1em;
+  display: block;
+  margin-bottom: 0.1em;
 }
 
 .addNewRecipeForm input {
-    display: block;
-    margin: 0 0 0.8em 0;
+  display: block;
+  margin: 0 0 0.8em 0;
 }
 
 .addNewRecipeForm #imageUploadLabel,
 .addNewRecipeForm #addIngredientButton,
 .addNewRecipeForm #addStepButton {
-    background: #72a9e1;
-    color: #fff;
-    cursor: pointer;
-    text-align: center;
+  background: #72a9e1;
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
 }
 
 #imageUpload {
-    border: 0;
-    clip: rect(0, 0, 0, 0);
-    height: 1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute !important;
-    white-space: nowrap;
-    width: 1px; 
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  white-space: nowrap;
+  width: 1px;
 }
 
 #imagePreview img {
-    width: 100%;
+  width: 100%;
 }
 
 .addNewRecipeForm fieldset {
-    margin-top: 0;
-    width: 87%;
+  margin-top: 0;
+  width: 87%;
 }
 
 .addNewRecipeForm fieldset input,
 .addNewRecipeForm fieldset textarea {
-    background: #fff;
+  background: #fff;
 }
 
 .quantityContainer,
 .unitContainer {
-    float: left;
-    width: 48%;
+  float: left;
+  width: 48%;
 }
 
 .quantityContainer {
-    margin-right: 2%;
+  margin-right: 2%;
 }
 
 .unitContainer {
-    margin-left: 2%;
+  margin-left: 2%;
 }
 
 .addNewRecipeForm #addIngredientButton,
 .addNewRecipeForm #addStepButton {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 .addNewRecipeForm .submit {
-    color: #fff;
-    cursor: pointer;
-    background: #a5b599;
+  color: #fff;
+  cursor: pointer;
+  background: #a5b599;
 }
 
 .ingredientContainer,
 .methodContainer {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .deleteButton {
-    color: #c71717;
-    cursor: pointer;
-    font-size: 1.5em;
-    margin-left: auto;
+  color: #c71717;
+  cursor: pointer;
+  font-size: 1.5em;
+  margin-left: auto;
 }
 
 .addNewRecipeForm svg {
-    pointer-events: none;
+  pointer-events: none;
 }

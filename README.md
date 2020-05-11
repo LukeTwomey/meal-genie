@@ -1,4 +1,3 @@
-
 # Meal Genie
 
 ### Installation

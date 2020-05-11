@@ -1,16 +1,24 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelopeOpenText } from '@fortawesome/pro-light-svg-icons';
-import { toggleShareModal } from '../actions';
-import RecipeCard from './recipes/RecipeCard';
-import Toolbar from './Toolbar';
-import './MealPlan.css';
+import React from "react";
+import { connect } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelopeOpenText } from "@fortawesome/pro-light-svg-icons";
+import { toggleShareModal } from "../actions";
+import RecipeCard from "./recipes/RecipeCard";
+import Toolbar from "./Toolbar";
+import "./MealPlan.css";
 
 const Landing = (props) => {
   const { recipes } = props.mealPlan;
   const { toggleShareModal } = props;
-  const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  const weekDays = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
 
   if (recipes === undefined || recipes.length === 0) {
     return <p>Touch the genie to create a new meal plan!</p>;
@@ -24,7 +32,12 @@ const Landing = (props) => {
           <RecipeCard recipe={recipe} />
         </div>
       ))}
-      <div className="shareButton" onClick={() => { toggleShareModal(); }}>
+      <div
+        className="shareButton"
+        onClick={() => {
+          toggleShareModal();
+        }}
+      >
         <FontAwesomeIcon icon={faEnvelopeOpenText} />
       </div>
     </div>
