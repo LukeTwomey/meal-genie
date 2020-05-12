@@ -64,7 +64,7 @@ const RecipeDetail = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    recipes: state.recipes,
+    recipes: Object.values(state.recipes),
     loading: state.loading,
   };
 };

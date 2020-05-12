@@ -53,7 +53,7 @@ const SearchModal = ({
 
 const mapStateToProps = (state) => {
   return {
-    recipes: state.recipes,
+    recipes: Object.values(state.recipes),
     show: state.searchModal.show,
   };
 };

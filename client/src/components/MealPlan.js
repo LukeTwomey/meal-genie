@@ -8,7 +8,7 @@ import Toolbar from "./Toolbar";
 import "./MealPlan.css";
 
 const Landing = (props) => {
-  const { recipes } = props.mealPlan;
+  const recipes = props.mealPlan;
   const { toggleShareModal } = props;
   const weekDays = [
     "Monday",
@@ -45,9 +45,9 @@ const Landing = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  recipes: state.recipes,
+  recipes: Object.values(state.recipes),
   loading: state.loading,
-  mealPlan: state.mealPlan,
+  mealPlan: Object.values(state.mealPlan),
 });
 
 export default connect(mapStateToProps, { toggleShareModal })(Landing);

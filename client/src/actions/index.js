@@ -33,12 +33,8 @@ export const planMeals = () => {
   };
 };
 
-export const toggleMealLock = (arrayIndex) => {
-  return (dispatch, getState) => {
-    const state = getState();
-    const mealPlan = state.mealPlan.recipes;
-    dispatch({ type: "TOGGLE_MEAL_LOCK", payload: { mealPlan, arrayIndex } });
-  };
+export const toggleMealLock = (arrayIndex) => (dispatch) => {
+  dispatch({ type: "TOGGLE_MEAL_LOCK", payload: { arrayIndex } });
 };
 
 export const toggleSearchModal = (arrayIndex) => ({
@@ -50,17 +46,15 @@ export const toggleShareModal = () => ({
   type: "TOGGLE_SHARE_MODAL",
 });
 
-export const replaceMealPlanRecipe = (id) => {
-  return (dispatch, getState) => {
-    const state = getState();
-    const recipes = state.recipes;
-    const currentRecipe = state.searchModal.activeArrayIndex;
-    const newRecipe = id;
-    dispatch({
-      type: "REPLACE_RECIPE",
-      payload: { recipes, currentRecipe, newRecipe },
-    });
-    dispatch({ type: "TOGGLE_SEARCH_MODAL", payload: { id: null } });
-    dispatch(clearGroceryList());
-  };
+export const replaceMealPlanRecipe = (id) => (dispatch, getState) => {
+  const state = getState();
+  const recipes = state.recipes;
+  const currentRecipe = state.searchModal.activeArrayIndex;
+  const newRecipe = id;
+  dispatch({
+    type: "REPLACE_RECIPE",
+    payload: { recipes, currentRecipe, newRecipe },
+  });
+  dispatch({ type: "TOGGLE_SEARCH_MODAL", payload: { id: null } });
+  dispatch(clearGroceryList());
 };

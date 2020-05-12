@@ -1,29 +1,33 @@
 import { shuffle } from "../helpers";
 
-const initialState = { recipes: [] };
+const initialState = [];
+let currentMealPlan = null;
+let newMealPlan = null;
+let allRecipes = null;
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case "PLAN_MEALS":
-      const allRecipes = [...action.payload];
+      allRecipes = Object.values(action.payload);
       const shuffledRecipes = shuffle(allRecipes);
+      currentMealPlan = state;
 
       // If you don't currently have any meal plan set, simply return 7 recipes from the shuffled array
       // These are already randomly shuffled so you can just splice the first 7 recipes
-      if ({ ...state }.recipes.length === 0) {
-        return { ...state, recipes: shuffledRecipes.slice(0, 7) };
+      if (currentMealPlan.length === 0) {
+        return [...shuffledRecipes.slice(0, 7)];
       } else {
         // Create an array of all the recipes currently locked in the meal plan
         // These will be used to make sure a duplicate recipe is not added to the plan
-        let lockedRecipes = state.recipes.filter(
+        // If none of the recipes have the locked flag, this array will just be empty
+        let lockedRecipes = currentMealPlan.filter(
           (recipe) => recipe.locked === true
         );
 
         // Create an empty array which will be used to populate the newly generated meal plan, and returned at the end
         let newMealPlan = [];
-
         // For every single recipe in the current meal plan
-        state.recipes.forEach((recipe) => {
+        currentMealPlan.forEach((recipe) => {
           // Check if recipe is locked. If it is, just push it into the array for the new meal plan as it should be kept with no change
           if (!recipe.locked) {
             // If recipe is unlocked, loop over the shuffled recipes array to find a new, replacement recipe
@@ -47,47 +51,44 @@ export default (state = initialState, action) => {
             newMealPlan.push(recipe);
           }
         });
-
-        return { ...state, recipes: newMealPlan };
+        return [...newMealPlan];
       }
 
     case "TOGGLE_MEAL_LOCK":
-      return {
-        ...state,
-        recipes: state.recipes.map((recipe, index) => {
-          // Find the recipe with the matching id
-          if (index === action.payload.arrayIndex) {
-            // Return a new object
-            return {
-              ...recipe, // copy the existing recipe
-              locked:
-                recipe.locked === undefined || recipe.locked === false
-                  ? true
-                  : false, // toggle the locked status
-            };
-          }
+      currentMealPlan = state;
+      newMealPlan = currentMealPlan.map((recipe, index) => {
+        // Find the recipe with the matching id
+        if (index === action.payload.arrayIndex) {
+          // Return a new object
+          return {
+            ...recipe, // copy the existing recipe
+            locked: recipe.locked ? false : true, // toggle the locked status
+          };
+        }
+        // Leave every other item unchanged
+        return recipe;
+      });
 
-          // Leave every other item unchanged
-          return recipe;
-        }),
-      };
+      return [...newMealPlan];
 
     case "REPLACE_RECIPE":
-      const newRecipe = action.payload.recipes.filter(
+      allRecipes = Object.values(action.payload.recipes);
+      currentMealPlan = state;
+
+      const newRecipe = allRecipes.filter(
         (recipe) => recipe._id === action.payload.newRecipe
       )[0];
 
-      return {
-        ...state,
-        recipes: state.recipes.map((recipe, i) => {
-          if (i === action.payload.currentRecipe) {
-            return {
-              ...newRecipe,
-            };
-          }
-          return recipe;
-        }),
-      };
+      newMealPlan = currentMealPlan.map((recipe, i) => {
+        if (i === action.payload.currentRecipe) {
+          return {
+            ...newRecipe,
+          };
+        }
+        return recipe;
+      });
+
+      return [...newMealPlan];
     default:
       return state;
   }

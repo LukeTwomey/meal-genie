@@ -6,7 +6,7 @@ import Loading from "./Loading/Loading";
 
 const GroceryList = (props) => {
   const groceryList = props.groceryList;
-  const mealPlan = props.mealPlan.recipes;
+  const mealPlan = props.mealPlan;
 
   if (mealPlan.length === 0) {
     return <p>First create a meal plan!</p>;

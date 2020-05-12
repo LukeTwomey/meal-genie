@@ -4,7 +4,7 @@ export default (state = [], action) => {
       return [];
     case "CREATE_GROCERY_LIST":
       const groceryList = [];
-      const mealPlan = action.payload.recipes;
+      const mealPlan = action.payload;
 
       mealPlan.forEach((mealPlanRecipe) => {
         mealPlanRecipe.ingredients.forEach((ingredient) => {

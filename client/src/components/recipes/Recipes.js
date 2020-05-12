@@ -37,7 +37,7 @@ class Recipes extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    recipes: state.recipes,
+    recipes: Object.values(state.recipes),
     loading: state.loading,
   };
 };

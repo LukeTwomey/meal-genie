@@ -23,7 +23,7 @@ class ShareModal extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     this.resetForm();
-    const { recipes } = this.props.mealPlan;
+    const recipes = this.props.mealPlan;
     const weekdays = [
       { day: "Monday" },
       { day: "Tuesday" },
