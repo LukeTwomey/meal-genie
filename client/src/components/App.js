@@ -10,6 +10,7 @@ import MealPlan from "./MealPlan";
 import Recipes from "./recipes/Recipes";
 import RecipeDetail from "./recipes/RecipeDetail";
 import RecipeNew from "./recipes/RecipeNew";
+import RecipeEdit from "./recipes/RecipeEdit";
 import GroceryList from "./GroceryList";
 import "./App.css";
 
@@ -32,6 +33,7 @@ class App extends Component {
                 <Route path="/recipes/new" exact component={RecipeNew} />
                 <Route path="/recipes/:name" exact component={RecipeDetail} />
               </Switch>
+              <Route path="/recipes/edit/:name" exact component={RecipeEdit} />
               <Route path="/grocery-list" exact component={GroceryList} />
               <SearchModal />
               <ShareModal />
