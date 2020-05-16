@@ -1,11 +1,12 @@
 .addNewRecipeForm label {
   display: block;
   margin-bottom: 0.1em;
+  margin-top: 0.8em;
 }
 
 .addNewRecipeForm input {
   display: block;
-  margin: 0 0 0.8em 0;
+  margin: 0;
 }
 
 .addNewRecipeForm #imageUploadLabel,
@@ -34,6 +35,7 @@
 
 .addNewRecipeForm fieldset {
   margin-top: 0;
+  padding-top: 0.4em;
   width: 87%;
 }
 
@@ -73,6 +75,11 @@
   align-items: center;
 }
 
+.methodContainer label,
+.ingredientContainer label {
+  margin-top: 0;
+}
+
 .deleteButton {
   color: #c71717;
   cursor: pointer;
@@ -82,4 +89,20 @@
 
 .addNewRecipeForm svg {
   pointer-events: none;
+}
+
+.validationError {
+  color: #c71717;
+  font-style: italic;
+  font-size: 0.9em;
+}
+
+.error input,
+.addNewRecipeForm fieldset .error textarea,
+.addNewRecipeForm fieldset .error input {
+  background: #fce7e7;
+}
+
+.methodContainer textarea {
+  margin: 0;
 }
