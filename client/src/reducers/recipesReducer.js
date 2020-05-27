@@ -5,11 +5,11 @@ export default (state = [], action) => {
     case "FETCH_RECIPES":
       return { ..._.mapKeys(action.payload, "_id") };
     case "FETCH_RECIPE":
-      return { ...state, [action.payload.id]: action.payload };
+      return { ...state, [action.payload._id]: action.payload };
     case "CREATE_RECIPE":
-      return { ...state, [action.payload.id]: action.payload };
+      return { [action.payload._id]: action.payload, ...state };
     case "EDIT_RECIPE":
-      return { ...state, [action.payload.id]: action.payload };
+      return { ...state, [action.payload._id]: action.payload };
     case "DELETE_RECIPE":
       return _.omit(state, action.payload);
     default:

@@ -38,7 +38,6 @@ class RecipeForm extends Component {
 
     // Loop through all form fields and add them to the formData which will be sent in the post request
     for (let field in formValues) {
-      console.log(field);
       // handle case where data is an array (like ingredients or method)
       if (Array.isArray(formValues[field])) {
         let data = JSON.stringify(formValues[field]);
