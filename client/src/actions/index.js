@@ -1,4 +1,5 @@
 import axios from "axios";
+import history from "../history";
 
 export const createRecipe = (formData, config) => async (dispatch) => {
   const response = await axios.post("/api/recipes", formData, config);
@@ -10,6 +11,7 @@ export const fetchRecipes = () => async (dispatch) => {
   const response = await axios.get("/api/recipes");
   dispatch({ type: "FETCH_RECIPES", payload: response.data.reverse() });
   dispatch(setLoadingStatus(false));
+  history.push("/recipes");
 };
 
 export const fetchRecipe = (id) => async (dispatch) => {
