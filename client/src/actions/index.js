@@ -1,10 +1,30 @@
 import axios from "axios";
 
+export const createRecipe = (formData, config) => async (dispatch) => {
+  const response = await axios.post("/api/recipes", formData, config);
+  dispatch({ type: "CREATE_RECIPE", payload: response.data });
+};
+
 export const fetchRecipes = () => async (dispatch) => {
   dispatch(setLoadingStatus(true));
   const response = await axios.get("/api/recipes");
   dispatch({ type: "FETCH_RECIPES", payload: response.data.reverse() });
   dispatch(setLoadingStatus(false));
+};
+
+export const fetchRecipe = (id) => async (dispatch) => {
+  const response = await axios.get(`/api/recipes/${id}`);
+  dispatch({ type: "FETCH_RECIPE", payload: response.data });
+};
+
+export const editRecipe = (id, formData, config) => async (dispatch) => {
+  const response = await axios.put(`/api/recipes/${id}`, formData, config);
+  dispatch({ type: "EDIT_RECIPE", payload: response.data });
+};
+
+export const deleteRecipe = (id) => async (dispatch) => {
+  await axios.delete(`/api/recipes/${id}`);
+  dispatch({ type: "DELETE_RECIPE", payload: id });
 };
 
 export const setLoadingStatus = (boolean) => ({

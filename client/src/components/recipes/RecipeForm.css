@@ -10,8 +10,8 @@
 }
 
 .addNewRecipeForm #imageUploadLabel,
-.addNewRecipeForm #addIngredientButton,
-.addNewRecipeForm #addStepButton {
+.addNewRecipeForm #addIngredientsButton,
+.addNewRecipeForm #addMethodButton {
   background: #72a9e1;
   color: #fff;
   cursor: pointer;
@@ -58,8 +58,8 @@
   margin-left: 2%;
 }
 
-.addNewRecipeForm #addIngredientButton,
-.addNewRecipeForm #addStepButton {
+.addNewRecipeForm #addIngredientsButton,
+.addNewRecipeForm #addMethodButton {
   margin-top: 0;
 }
 
@@ -69,14 +69,12 @@
   background: #a5b599;
 }
 
-.ingredientContainer,
-.methodContainer {
+.fieldArrayContainer {
   display: flex;
   align-items: center;
 }
 
-.methodContainer label,
-.ingredientContainer label {
+.fieldArrayContainer label {
   margin-top: 0;
 }
 
@@ -103,6 +101,6 @@
   background: #fce7e7;
 }
 
-.methodContainer textarea {
+.fieldArrayContainer textarea {
   margin: 0;
 }

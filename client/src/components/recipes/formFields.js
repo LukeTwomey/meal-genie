@@ -35,4 +35,41 @@ export default [
     type: "number",
     validationErrorText: "Please enter the number of syns",
   },
+  {
+    label: "Ingredients",
+    name: "ingredients",
+    type: "array",
+    buttonText: "Add Ingredient",
+    arrayFields: [
+      {
+        label: "Name",
+        name: "name",
+        type: "text",
+      },
+      {
+        label: "Quantity",
+        name: "quantity",
+        type: "number",
+      },
+      {
+        label: "Unit",
+        name: "unit",
+        type: "select",
+        options: ["", "g", "kg", "tsp", "tbsp", "ml", "l"],
+      },
+    ],
+  },
+  {
+    label: "Method",
+    name: "method",
+    type: "array",
+    buttonText: "Add Step",
+    arrayFields: [
+      {
+        label: "Step",
+        name: "step",
+        type: "textarea",
+      },
+    ],
+  },
 ];

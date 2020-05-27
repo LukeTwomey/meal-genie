@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/pro-regular-svg-icons";
+import { faTrashAlt } from "@fortawesome/pro-solid-svg-icons";
 import RecipeImage from "./RecipeImage";
 import Loading from "../Loading/Loading";
 import "./RecipeDetail.css";
@@ -43,7 +44,14 @@ const RecipeDetail = (props) => {
               icon={faEdit}
               className="edit"
               onClick={() => {
-                console.log("hi");
+                console.log("edit");
+              }}
+            />
+            <FontAwesomeIcon
+              icon={faTrashAlt}
+              className="deleteButton"
+              onClick={() => {
+                console.log("delete");
               }}
             />
             <p>{recipe.description}</p>
