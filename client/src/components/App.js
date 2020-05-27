@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
+import history from "../history";
 import { fetchRecipes } from "../actions";
 import ScrollToTop from "./ScrollToTop";
 import SearchModal from "./SearchModal";
@@ -21,7 +22,7 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter>
+      <Router history={history}>
         <ScrollToTop>
           <div className="container">
             <Nav />
@@ -40,7 +41,7 @@ class App extends Component {
             </div>
           </div>
         </ScrollToTop>
-      </BrowserRouter>
+      </Router>
     );
   }
 }
