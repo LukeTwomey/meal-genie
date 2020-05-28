@@ -45,6 +45,21 @@ module.exports = (app) => {
     res.send(recipes);
   });
 
+  // Fetch single recipe from the database
+  app.get("/api/recipes/:id", async (req, res) => {
+    console.log("Fetch recipe with this id: " + req.params.id);
+  });
+
+  // Edit specific recipe
+  app.put("/api/recipes/:id", async (req, res) => {
+    console.log("Edit recipe with this id: " + req.params.id);
+  });
+
+  // Delete recipe from the database
+  app.delete("/api/recipes/:id", async (req, res) => {
+    console.log("Delete recipe with this id: " + req.params.id);
+  });
+
   // Add a new recipe to the database. Use Multer middleware to handle multipart form data (used for image)
   app.post("/api/recipes", upload.single("image"), async (req, res) => {
     let image = null;
