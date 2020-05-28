@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/pro-regular-svg-icons";
 import { faTrashAlt } from "@fortawesome/pro-solid-svg-icons";
@@ -40,13 +41,15 @@ const RecipeDetail = (props) => {
           </div>
           <h2>{recipe.name}</h2>
           <div className="recipeText">
-            <FontAwesomeIcon
-              icon={faEdit}
-              className="edit"
-              onClick={() => {
-                console.log("edit");
-              }}
-            />
+            <Link to={`/recipes/edit/${recipeUrlName}`}>
+              <FontAwesomeIcon
+                icon={faEdit}
+                className="edit"
+                onClick={() => {
+                  console.log("edit");
+                }}
+              />
+            </Link>
             <FontAwesomeIcon
               icon={faTrashAlt}
               className="deleteButton"
