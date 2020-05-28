@@ -42,21 +42,9 @@ const RecipeDetail = (props) => {
           <h2>{recipe.name}</h2>
           <div className="recipeText">
             <Link to={`/recipes/edit/${recipeUrlName}`}>
-              <FontAwesomeIcon
-                icon={faEdit}
-                className="edit"
-                onClick={() => {
-                  console.log("edit");
-                }}
-              />
+              <FontAwesomeIcon icon={faEdit} className="edit" />
             </Link>
-            <FontAwesomeIcon
-              icon={faTrashAlt}
-              className="deleteButton"
-              onClick={() => {
-                console.log("delete");
-              }}
-            />
+            <FontAwesomeIcon icon={faTrashAlt} className="deleteButton" />
             <p>{recipe.description}</p>
             <p>Rating: {recipe.rating}</p>
             <p>Cooking Time: {recipe.cookingTime}</p>

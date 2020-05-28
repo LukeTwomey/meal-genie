@@ -2,16 +2,17 @@ import React from "react";
 import { connect } from "react-redux";
 import RecipeForm from "./RecipeForm";
 
-const RecipeEdit = (props) => {
-  console.log(props.recipe);
-
-  return (
-    <div>
-      <h1>Edit Recipe</h1>
-      <RecipeForm fetchRecipes={props.fetchRecipes} />
-    </div>
-  );
-};
+class RecipeEdit extends React.Component {
+  render() {
+    console.log(this.props.recipe);
+    return (
+      <div>
+        <h1>Edit Recipe</h1>
+        <RecipeForm fetchRecipes={this.props.fetchRecipes} />
+      </div>
+    );
+  }
+}
 
 const mapStateToProps = (state, ownProps) => {
   const allRecipes = Object.values(state.recipes);
