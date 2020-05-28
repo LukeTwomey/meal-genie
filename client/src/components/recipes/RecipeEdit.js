@@ -1,8 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
 import RecipeForm from "./RecipeForm";
+import { fetchRecipe } from "../../actions";
 
 class RecipeEdit extends React.Component {
+  componentDidMount() {
+    this.props.fetchRecipe(this.props.match.params.name);
+  }
+
   render() {
     console.log(this.props.recipe);
     return (
@@ -30,4 +35,4 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps)(RecipeEdit);
+export default connect(mapStateToProps, { fetchRecipe })(RecipeEdit);
