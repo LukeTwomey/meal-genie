@@ -9,11 +9,12 @@ class RecipeEdit extends React.Component {
   }
 
   render() {
-    console.log(this.props.recipe);
+    console.log(this.props);
+
     return (
       <div>
         <h1>Edit Recipe</h1>
-        <RecipeForm fetchRecipes={this.props.fetchRecipes} />
+        <RecipeForm />
       </div>
     );
   }
@@ -27,8 +28,6 @@ const mapStateToProps = (state, ownProps) => {
     let recipeName = o.name.replace(/\s+/g, "-").toLowerCase();
     return recipeName === recipeUrlName ? true : false;
   });
-
-  // console.log(recipe);
 
   return {
     recipe: recipe,

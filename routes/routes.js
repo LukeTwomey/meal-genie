@@ -7,6 +7,12 @@ const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
 const Recipe = mongoose.model("recipe");
 
+function prettify(str) {
+  return str.replace(/(-|^)([^-]?)/g, function (_, prep, letter) {
+    return (prep && " ") + letter.toUpperCase();
+  });
+}
+
 module.exports = (app) => {
   app.post("/api/shareMealPlan", async (req, res) => {
     let transporter = nodemailer.createTransport({
@@ -46,8 +52,9 @@ module.exports = (app) => {
   });
 
   // Fetch single recipe from the database
-  app.get("/api/recipes/:id", async (req, res) => {
-    console.log("Fetch recipe with this id: " + req.params.id);
+  app.get("/api/recipes/:name", async (req, res) => {
+    const recipe = await Recipe.findOne({ name: prettify(req.params.name) });
+    res.send(recipe);
   });
 
   // Edit specific recipe
