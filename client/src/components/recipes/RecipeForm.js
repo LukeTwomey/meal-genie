@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Field, FieldArray, reduxForm } from "redux-form";
 import formFields from "./formFields";
+import { arrayBufferToBase64 } from "../../helpers";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/pro-solid-svg-icons";
 import "./RecipeForm.css";
@@ -12,13 +13,6 @@ class RecipeForm extends Component {
     if (this.props.initialValues) {
       this.addImage(this.props.initialValues.image);
     }
-  }
-
-  arrayBufferToBase64(buffer) {
-    var binary = "";
-    var bytes = [].slice.call(new Uint8Array(buffer));
-    bytes.forEach((b) => (binary += String.fromCharCode(b)));
-    return window.btoa(binary);
   }
 
   onFileInputSubmit = () => {
@@ -35,7 +29,7 @@ class RecipeForm extends Component {
     }
 
     if (image) {
-      const imageString = this.arrayBufferToBase64(image.data.data);
+      const imageString = arrayBufferToBase64(image.data.data);
       imageElement.src = "data:image/jpeg;base64," + imageString;
       preview.appendChild(imageElement);
       this.setState({ image: image });
