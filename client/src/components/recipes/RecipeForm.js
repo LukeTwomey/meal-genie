@@ -8,20 +8,44 @@ import "./RecipeForm.css";
 class RecipeForm extends Component {
   state = { image: null };
 
-  addImage = () => {
+  componentDidMount() {
+    if (this.props.initialValues) {
+      this.addImage(this.props.initialValues.image);
+    }
+  }
+
+  arrayBufferToBase64(buffer) {
+    var binary = "";
+    var bytes = [].slice.call(new Uint8Array(buffer));
+    bytes.forEach((b) => (binary += String.fromCharCode(b)));
+    return window.btoa(binary);
+  }
+
+  onFileInputSubmit = () => {
+    this.addImage();
+  };
+
+  addImage = (image) => {
     const fileInput = document.getElementById("imageUpload");
     const preview = document.getElementById("imagePreview");
-    const files = fileInput.files;
+    const imageElement = document.createElement("img");
 
     while (preview.firstChild) {
       preview.removeChild(preview.firstChild);
     }
 
-    if (files.length !== 0) {
-      const image = document.createElement("img");
-      image.src = window.URL.createObjectURL(files[0]);
-      preview.appendChild(image);
-      this.setState({ image: files[0] });
+    if (image) {
+      const imageString = this.arrayBufferToBase64(image.data.data);
+      imageElement.src = "data:image/jpeg;base64," + imageString;
+      preview.appendChild(imageElement);
+      this.setState({ image: image });
+    } else {
+      const files = fileInput.files;
+      if (files.length !== 0) {
+        imageElement.src = window.URL.createObjectURL(files[0]);
+        preview.appendChild(imageElement);
+        this.setState({ image: files[0] });
+      }
     }
   };
 
@@ -190,7 +214,7 @@ class RecipeForm extends Component {
           type="file"
           id="imageUpload"
           accept=".jpg, .jpeg, .png"
-          onChange={this.addImage}
+          onChange={this.onFileInputSubmit}
         />
         <div id="imagePreview"></div>
       </div>

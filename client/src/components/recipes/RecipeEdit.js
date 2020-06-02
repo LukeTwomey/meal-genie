@@ -1,15 +1,19 @@
 import React from "react";
 import { connect } from "react-redux";
 import RecipeForm from "./RecipeForm";
-import { fetchRecipe } from "../../actions";
+import { fetchRecipe, editRecipe } from "../../actions";
 
 class RecipeEdit extends React.Component {
   componentDidMount() {
     this.props.fetchRecipe(this.props.match.params.name);
   }
 
+  onSubmit = (formValues) => {
+    console.log(formValues);
+  };
+
   render() {
-    console.log(this.props);
+    // console.log(this.props.recipe);
 
     if (!this.props.recipe) {
       return <div>Loading!</div>;
@@ -18,8 +22,10 @@ class RecipeEdit extends React.Component {
     return (
       <div>
         <h1>Edit Recipe</h1>
-        <div>{this.props.recipe.name}</div>
-        <RecipeForm />
+        <RecipeForm
+          initialValues={this.props.recipe}
+          onSubmit={this.onSubmit}
+        />
       </div>
     );
   }
@@ -39,4 +45,6 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchRecipe })(RecipeEdit);
+export default connect(mapStateToProps, { fetchRecipe, editRecipe })(
+  RecipeEdit
+);
