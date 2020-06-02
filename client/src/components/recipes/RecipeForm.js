@@ -1,14 +1,9 @@
 import React, { Component } from "react";
 import { Field, FieldArray, reduxForm } from "redux-form";
-import { Redirect } from "react-router-dom";
-import axios from "axios";
 import formFields from "./formFields";
-import IngredientInputs from "./IngredientInputs";
-import MethodInputs from "./MethodInputs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/pro-solid-svg-icons";
 import "./RecipeForm.css";
-import { convertCompilerOptionsFromJson } from "typescript";
 
 class RecipeForm extends Component {
   state = { image: null };
