@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import RecipeForm from "./RecipeForm";
+import Loading from "../Loading/Loading";
 import { fetchRecipe, editRecipe } from "../../actions";
 
 class RecipeEdit extends React.Component {
@@ -13,10 +14,8 @@ class RecipeEdit extends React.Component {
   };
 
   render() {
-    // console.log(this.props.recipe);
-
     if (!this.props.recipe) {
-      return <div>Loading!</div>;
+      return <Loading />;
     }
 
     return (
