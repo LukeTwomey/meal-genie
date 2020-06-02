@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import RecipeForm from "./RecipeForm";
 import Loading from "../Loading/Loading";
 import { fetchRecipe, editRecipe } from "../../actions";
+import _ from "lodash";
 
 class RecipeEdit extends React.Component {
   componentDidMount() {
@@ -22,7 +23,18 @@ class RecipeEdit extends React.Component {
       <div>
         <h1>Edit Recipe</h1>
         <RecipeForm
-          initialValues={this.props.recipe}
+          initialValues={_.pick(
+            this.props.recipe,
+            "cookingTime",
+            "description",
+            "image",
+            "ingredients",
+            "method",
+            "name",
+            "rating",
+            "servings",
+            "syns"
+          )}
           onSubmit={this.onSubmit}
         />
       </div>
