@@ -11,9 +11,14 @@ class RecipeEdit extends React.Component {
   render() {
     console.log(this.props);
 
+    if (!this.props.recipe) {
+      return <div>Loading!</div>;
+    }
+
     return (
       <div>
         <h1>Edit Recipe</h1>
+        <div>{this.props.recipe.name}</div>
         <RecipeForm />
       </div>
     );

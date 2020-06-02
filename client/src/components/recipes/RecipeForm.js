@@ -1,11 +1,9 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import { Field, FieldArray, reduxForm } from "redux-form";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 import formFields from "./formFields";
 import IngredientInputs from "./IngredientInputs";
-import { createRecipe } from "../../actions";
 import MethodInputs from "./MethodInputs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/pro-solid-svg-icons";
@@ -33,31 +31,7 @@ class RecipeForm extends Component {
   };
 
   onSubmit = async (formValues) => {
-    // Need to submit post using multipart/form-data, as there is a File (image) included
-    const formData = new FormData();
-
-    // Loop through all form fields and add them to the formData which will be sent in the post request
-    for (let field in formValues) {
-      // handle case where data is an array (like ingredients or method)
-      if (Array.isArray(formValues[field])) {
-        let data = JSON.stringify(formValues[field]);
-        formData.set(field, data);
-      } else {
-        // Set formdata for all the other normal string fields (name, rating, description etc)
-        formData.set(field, formValues[field]);
-      }
-    }
-
-    // Add the recipe image to formData
-    formData.set("image", this.state["image"]);
-
-    // Set up the config to tell axios that this is a multipart post request (text and image/file)
-    const config = { headers: { "content-type": "multipart/form-data" } };
-    // await axios.post("/api/recipes", formData, config);
-    // this.props.fetchRecipes();
-    // this.setState({ redirect: "/recipes" });
-
-    this.props.createRecipe(formData, config);
+    this.props.onSubmit(formValues, this.state.image);
   };
 
   renderError = ({ error, touched }) => {
@@ -244,14 +218,6 @@ class RecipeForm extends Component {
   }
 }
 
-// const mapStateToProps = (state) => {
-//   return {
-//     recipes: state.recipes,
-//   };
-// };
-
-// export default connect(mapStateToProps, { fetchRecipes })(RecipeForm);
-
 const validateFieldArrays = (
   formValues,
   errors,
@@ -309,9 +275,7 @@ const validate = (formValues) => {
   return errors;
 };
 
-const formWrapped = reduxForm({
+export default reduxForm({
   form: "recipeForm",
   validate,
 })(RecipeForm);
-
-export default connect(null, { createRecipe })(formWrapped);
