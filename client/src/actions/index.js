@@ -14,8 +14,8 @@ export const fetchRecipes = () => async (dispatch) => {
   dispatch(setLoadingStatus(false));
 };
 
-export const fetchRecipe = (id) => async (dispatch) => {
-  const response = await axios.get(`/api/recipes/${id}`);
+export const fetchRecipe = (name) => async (dispatch) => {
+  const response = await axios.get(`/api/recipes/${name}`);
   dispatch({ type: "FETCH_RECIPE", payload: response.data });
 };
 
