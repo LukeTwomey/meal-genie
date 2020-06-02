@@ -24,7 +24,7 @@ const RecipeDetail = (props) => {
       return (
         <li key={i}>
           {ingredient.quantity}
-          {ingredient.unit} {ingredient.ingredient}
+          {ingredient.unit} {ingredient.name}
         </li>
       );
     });
