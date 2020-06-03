@@ -1,17 +1,10 @@
 const mongoose = require("mongoose");
 const keys = require("../config/keys");
-const fs = require("fs");
 const nodemailer = require("nodemailer");
-const optimise = require("../services/imageOptimise");
 const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
 const Recipe = mongoose.model("recipe");
-
-function prettify(str) {
-  return str.replace(/(-|^)([^-]?)/g, function (_, prep, letter) {
-    return (prep && " ") + letter.toUpperCase();
-  });
-}
+const helpers = require("../helpers.js");
 
 module.exports = (app) => {
   app.post("/api/shareMealPlan", async (req, res) => {
@@ -53,13 +46,21 @@ module.exports = (app) => {
 
   // Fetch single recipe from the database
   app.get("/api/recipes/:name", async (req, res) => {
-    const recipe = await Recipe.findOne({ name: prettify(req.params.name) });
+    const recipe = await Recipe.findOne({
+      name: helpers.prettify(req.params.name),
+    });
     res.send(recipe);
   });
 
   // Edit specific recipe
-  app.put("/api/recipes/:id", async (req, res) => {
-    console.log("Edit recipe with this id: " + req.params.id);
+  app.put("/api/recipes/:name", upload.single("image"), async (req, res) => {
+    const props = await helpers.prepareRecipeProps(req.file, req.body);
+    const recipe = await Recipe.updateOne(
+      { name: helpers.prettify(req.params.name) },
+      props
+    );
+    console.log(recipe);
+    res.send(recipe);
   });
 
   // Delete recipe from the database
@@ -69,48 +70,8 @@ module.exports = (app) => {
 
   // Add a new recipe to the database. Use Multer middleware to handle multipart form data (used for image)
   app.post("/api/recipes", upload.single("image"), async (req, res) => {
-    let image = null;
-
-    // Only need to do this stuff if the user has added an image file to the recipe
-    if (req.file) {
-      // Get the image file from the incoming request (with the help of Multer)
-      image = fs.readFileSync(req.file.path);
-
-      image = {
-        data: await optimise(image), // Optimise the image to reduce filesize before saving it to the db
-        contentType: "image/jpeg",
-      };
-    }
-
-    const {
-      name,
-      rating,
-      cookingTime,
-      servings,
-      description,
-      syns,
-      ingredients,
-      method,
-    } = req.body;
-
-    // ingredients and method are JSON arrays of objects. Need to be parsed before adding to the database
-    const _ingredients = JSON.parse(ingredients);
-    const _method = JSON.parse(method);
-
-    // Save the recipe to the db
-    const _recipe = await new Recipe({
-      name,
-      rating,
-      cookingTime,
-      servings,
-      description,
-      syns,
-      ingredients: _ingredients,
-      method: _method,
-      image,
-    }).save();
-    console.log(_recipe);
-
+    const props = await helpers.prepareRecipeProps(req.file, req.body);
+    const _recipe = await new Recipe(props).save();
     res.send(_recipe);
   });
 };
