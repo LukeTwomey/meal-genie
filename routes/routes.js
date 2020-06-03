@@ -55,11 +55,11 @@ module.exports = (app) => {
   // Edit specific recipe
   app.put("/api/recipes/:name", upload.single("image"), async (req, res) => {
     const props = await helpers.prepareRecipeProps(req.file, req.body);
-    const recipe = await Recipe.updateOne(
+    const recipe = await Recipe.findOneAndUpdate(
       { name: helpers.prettify(req.params.name) },
-      props
+      props,
+      { new: true }
     );
-    console.log(recipe);
     res.send(recipe);
   });
 
