@@ -28,8 +28,12 @@ class RecipeForm extends Component {
       preview.removeChild(preview.firstChild);
     }
 
+    let imageString = "";
+
     if (image) {
-      const imageString = arrayBufferToBase64(image.data.data);
+      if (image.data) {
+        imageString = arrayBufferToBase64(image.data.data);
+      }
       imageElement.src = "data:image/jpeg;base64," + imageString;
       preview.appendChild(imageElement);
       this.setState({ image: image });

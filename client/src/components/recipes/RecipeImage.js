@@ -6,7 +6,10 @@ class Recipeimage extends Component {
     const { image } = this.props;
 
     if (image) {
-      const imageString = arrayBufferToBase64(image.data.data);
+      let imageString = "";
+      if (image.data) {
+        imageString = arrayBufferToBase64(image.data.data);
+      }
       return (
         <img
           src={"data:image/jpeg;base64," + imageString}
