@@ -10,8 +10,28 @@ class RecipeEdit extends React.Component {
     this.props.fetchRecipe(this.props.match.params.name);
   }
 
-  onSubmit = (formValues) => {
-    console.log(formValues);
+  onSubmit = (formValues, image) => {
+    // Need to submit post using multipart/form-data, as there is a File (image) included
+    const formData = new FormData();
+
+    // Loop through all form fields and add them to the formData which will be sent in the post request
+    for (let field in formValues) {
+      // handle case where data is an array (like ingredients or method)
+      if (Array.isArray(formValues[field])) {
+        let data = JSON.stringify(formValues[field]);
+        formData.set(field, data);
+      } else {
+        // Set formdata for all the other normal string fields (name, rating, description etc)
+        formData.set(field, formValues[field]);
+      }
+    }
+
+    // Add the recipe image to formData
+    formData.set("image", image);
+
+    // Set up the config to tell axios that this is a multipart post request (text and image/file)
+    const config = { headers: { "content-type": "multipart/form-data" } };
+    this.props.editRecipe(this.props.match.params.name, formData, config);
   };
 
   render() {
