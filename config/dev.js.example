@@ -3,7 +3,9 @@ module.exports = {
     gmailUser: 'userhere@gmail.com',
     gmailPassword: 'gmailSpecificAppPasswordHere',
     awsAccessKeyId: 'awsAccessKeyIdGoesHere',
-    awsSecretAccessKey: 'awsSecretAccessKeyGoesHere'
+    awsSecretAccessKey: 'awsSecretAccessKeyGoesHere',
+    awsBucketName: 'bucketNameHere',
+    awsBucketRegion: 'bucketRegionHere'
 }
 
 

@@ -8,7 +8,7 @@ const AWS = require("aws-sdk");
 const s3 = new AWS.S3({
   accessKeyId: keys.awsAccessKeyId,
   secretAccessKey: keys.awsSecretAccessKey,
-  region: "eu-west-2",
+  region: keys.awsBucketRegion,
 });
 
 module.exports = (app) => {
@@ -18,7 +18,7 @@ module.exports = (app) => {
     s3.getSignedUrl(
       "putObject",
       {
-        Bucket: "meal-genie",
+        Bucket: keys.awsBucketName,
         ContentType: "image/jpeg",
         Key: key,
       },
