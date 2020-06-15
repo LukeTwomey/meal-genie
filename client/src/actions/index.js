@@ -1,10 +1,27 @@
 import axios from "axios";
 import history from "../history";
 
-export const createRecipe = (formData, config) => async (dispatch) => {
-  const response = await axios.post("/api/recipes", formData, config);
-  dispatch({ type: "CREATE_RECIPE", payload: response.data });
-  history.push("/recipes");
+export const createRecipe = (formValues, imageName, image) => async (
+  dispatch
+) => {
+  const uploadConfig = await axios.post("/api/upload", {
+    imageFilename: imageName,
+  });
+
+  const upload = await axios.put(uploadConfig.data.url, image, {
+    headers: {
+      "Content-Type": image.type,
+    },
+  });
+
+  const response = await axios.post("/api/recipes", {
+    ...formValues,
+    imageUrl: uploadConfig.data.key,
+  });
+
+  // const response = await axios.post("/api/recipes", formData, config);
+  // dispatch({ type: "CREATE_RECIPE", payload: response.data });
+  // history.push("/recipes");
 };
 
 export const fetchRecipes = () => async (dispatch) => {
@@ -16,12 +33,16 @@ export const fetchRecipes = () => async (dispatch) => {
 
 export const fetchRecipe = (name) => async (dispatch) => {
   const response = await axios.get(`/api/recipes/${name}`);
+  console.log(response);
   dispatch({ type: "FETCH_RECIPE", payload: response.data });
 };
 
-export const editRecipe = (id, formData, config) => async (dispatch) => {
-  const response = await axios.put(`/api/recipes/${id}`, formData, config);
+export const editRecipe = (name, formData, config) => async (dispatch) => {
+  console.log(formData);
+  const response = await axios.put(`/api/recipes/${name}`, formData, config);
+  console.log(response);
   dispatch({ type: "EDIT_RECIPE", payload: response.data });
+  history.push("/recipes");
 };
 
 export const deleteRecipe = (id) => async (dispatch) => {

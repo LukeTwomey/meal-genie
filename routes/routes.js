@@ -8,7 +8,30 @@ const helpers = require("../helpers.js");
 const sharp = require("sharp");
 const AWS = require("aws-sdk");
 
+const s3 = new AWS.S3({
+  accessKeyId: keys.awsAccessKeyId,
+  secretAccessKey: keys.awsSecretAccessKey,
+  region: "eu-west-2",
+});
+
 module.exports = (app) => {
+  app.post("/api/upload", (req, res) => {
+    console.log("Here's what you sent:");
+    console.log(req.body.imageFilename);
+    // console.log(req.body.image);
+
+    const key = req.body.imageFilename;
+    s3.getSignedUrl(
+      "putObject",
+      {
+        Bucket: "meal-genie",
+        ContentType: "image/jpeg",
+        Key: key,
+      },
+      (err, url) => res.send({ key, url })
+    );
+  });
+
   app.post("/api/shareMealPlan", async (req, res) => {
     let transporter = nodemailer.createTransport({
       service: "gmail",
@@ -79,9 +102,15 @@ module.exports = (app) => {
   });
 
   // Add a new recipe to the database. Use Multer middleware to handle multipart form data (used for image)
-  app.post("/api/recipes", upload.single("image"), async (req, res) => {
-    const props = await helpers.prepareRecipeProps(req.file, req.body);
-    const _recipe = await new Recipe(props).save();
-    res.send(_recipe);
+  // app.post("/api/recipes", upload.single("image"), async (req, res) => {
+  //   const props = await helpers.prepareRecipeProps(req.file, req.body);
+  //   const _recipe = await new Recipe(props).save();
+  //   res.send(_recipe);
+  // });
+  app.post("/api/recipes", async (req, res) => {
+    console.log(req.body);
+    // const props = await helpers.prepareRecipeProps(req.file, req.body);
+    // const _recipe = await new Recipe(props).save();
+    // res.send(_recipe);
   });
 };
