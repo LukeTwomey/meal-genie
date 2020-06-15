@@ -16,12 +16,11 @@ export const createRecipe = (formValues, imageName, image) => async (
 
   const response = await axios.post("/api/recipes", {
     ...formValues,
-    imageUrl: uploadConfig.data.key,
+    image: uploadConfig.data.key,
   });
 
-  // const response = await axios.post("/api/recipes", formData, config);
-  // dispatch({ type: "CREATE_RECIPE", payload: response.data });
-  // history.push("/recipes");
+  dispatch({ type: "CREATE_RECIPE", payload: response.data });
+  history.push("/recipes");
 };
 
 export const fetchRecipes = () => async (dispatch) => {

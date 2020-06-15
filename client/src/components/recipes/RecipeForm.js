@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Field, FieldArray, reduxForm } from "redux-form";
 import formFields from "./formFields";
-import { arrayBufferToBase64 } from "../../helpers";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/pro-solid-svg-icons";
 import "./RecipeForm.css";
@@ -37,12 +36,12 @@ class RecipeForm extends Component {
       );
       console.log(image);
 
-      if (image.data) {
-        imageString = arrayBufferToBase64(image.data.data);
-      }
-      imageElement.src = "data:image/jpeg;base64," + imageString;
-      preview.appendChild(imageElement);
-      this.setState({ image: imageString });
+      // if (image.data) {
+      //   imageString = arrayBufferToBase64(image.data.data);
+      // }
+      // imageElement.src = "data:image/jpeg;base64," + imageString;
+      // preview.appendChild(imageElement);
+      // this.setState({ image: imageString });
     } else {
       const files = fileInput.files;
       if (files.length !== 0) {
@@ -54,7 +53,6 @@ class RecipeForm extends Component {
   };
 
   onSubmit = async (formValues) => {
-    // console.log(this.state.image);
     this.props.onSubmit(formValues, this.state.image);
   };
 
