@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { arrayBufferToBase64 } from "../../helpers";
 
 class Recipeimage extends Component {
   render() {

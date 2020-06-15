@@ -29,12 +29,3 @@ export const sort = (array, key) => {
     return 0;
   });
 };
-
-// Convert an image arrayBuffer (returned from the MongoDB) to
-// base 64 which can be used in image source path
-export const arrayBufferToBase64 = (buffer) => {
-  var binary = "";
-  var bytes = [].slice.call(new Uint8Array(buffer));
-  bytes.forEach((b) => (binary += String.fromCharCode(b)));
-  return window.btoa(binary);
-};
