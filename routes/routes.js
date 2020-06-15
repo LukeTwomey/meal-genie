@@ -5,6 +5,8 @@ const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
 const Recipe = mongoose.model("recipe");
 const helpers = require("../helpers.js");
+const sharp = require("sharp");
+const AWS = require("aws-sdk");
 
 module.exports = (app) => {
   app.post("/api/shareMealPlan", async (req, res) => {
@@ -49,11 +51,19 @@ module.exports = (app) => {
     const recipe = await Recipe.findOne({
       name: helpers.prettify(req.params.name),
     });
-    res.send(recipe);
+    console.log(recipe);
+    console.log(recipe.image.data);
+    const imageAsFile = await sharp(recipe.image.data).toFile("hey.jpg");
+    console.log(imageAsFile);
+    const newRecipe = { ...recipe._doc, imageAsFile: imageAsFile };
+    console.log(newRecipe);
+    console.log("Changing something once more");
+    res.send(newRecipe);
   });
 
   // Edit specific recipe
   app.put("/api/recipes/:name", upload.single("image"), async (req, res) => {
+    console.log(req.file);
     const props = await helpers.prepareRecipeProps(req.file, req.body);
     const recipe = await Recipe.findOneAndUpdate(
       { name: helpers.prettify(req.params.name) },
