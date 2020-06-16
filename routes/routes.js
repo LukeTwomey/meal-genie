@@ -68,7 +68,7 @@ module.exports = (app) => {
     const recipe = await Recipe.findOne({
       name: helpers.prettify(req.params.name),
     });
-    res.send(newRecipe);
+    res.send(recipe);
   });
 
   // Edit specific recipe, based on recipe name

@@ -8,48 +8,20 @@ import "./RecipeForm.css";
 class RecipeForm extends Component {
   state = { image: null };
 
-  componentDidMount() {
-    if (this.props.initialValues) {
-      console.log(this.props.initialValues);
-      this.addImage(this.props.initialValues.image);
-    }
-  }
-
   onFileInputSubmit = () => {
-    this.addImage();
-  };
-
-  addImage = (image) => {
     const fileInput = document.getElementById("imageUpload");
+    const files = fileInput.files;
     const preview = document.getElementById("imagePreview");
-    const imageElement = document.createElement("img");
+    let recipeImage = document.getElementById("recipeImage");
 
-    while (preview.firstChild) {
-      preview.removeChild(preview.firstChild);
+    if (!recipeImage) {
+      recipeImage = document.createElement("img");
+      recipeImage.id = "recipeImage";
     }
 
-    let imageString = "";
-
-    if (image) {
-      console.log(
-        "I'm adding an image from teh db into state. It's currently in this format:"
-      );
-      console.log(image);
-
-      // if (image.data) {
-      //   imageString = arrayBufferToBase64(image.data.data);
-      // }
-      // imageElement.src = "data:image/jpeg;base64," + imageString;
-      // preview.appendChild(imageElement);
-      // this.setState({ image: imageString });
-    } else {
-      const files = fileInput.files;
-      if (files.length !== 0) {
-        imageElement.src = window.URL.createObjectURL(files[0]);
-        preview.appendChild(imageElement);
-        this.setState({ image: files[0] });
-      }
-    }
+    recipeImage.src = window.URL.createObjectURL(files[0]);
+    preview.appendChild(recipeImage);
+    this.setState({ image: files[0] });
   };
 
   onSubmit = async (formValues) => {
@@ -219,7 +191,18 @@ class RecipeForm extends Component {
           accept=".jpg, .jpeg, .png"
           onChange={this.onFileInputSubmit}
         />
-        <div id="imagePreview"></div>
+        <div id="imagePreview">
+          {this.props.initialValues ? (
+            <img
+              src={
+                "https://meal-genie.s3.eu-west-2.amazonaws.com/" +
+                this.props.initialValues.image
+              }
+              alt="Recipe"
+              id="recipeImage"
+            ></img>
+          ) : null}
+        </div>
       </div>
     );
   };

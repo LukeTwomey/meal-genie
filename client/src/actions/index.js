@@ -8,7 +8,7 @@ export const createRecipe = (formValues, imageName, image) => async (
     imageFilename: imageName,
   });
 
-  const upload = await axios.put(uploadConfig.data.url, image, {
+  await axios.put(uploadConfig.data.url, image, {
     headers: {
       "Content-Type": image.type,
     },
@@ -32,7 +32,6 @@ export const fetchRecipes = () => async (dispatch) => {
 
 export const fetchRecipe = (name) => async (dispatch) => {
   const response = await axios.get(`/api/recipes/${name}`);
-  console.log(response);
   dispatch({ type: "FETCH_RECIPE", payload: response.data });
 };
 
