@@ -72,9 +72,9 @@ module.exports = (app) => {
   });
 
   // Edit specific recipe, based on recipe name
-  app.put("/api/recipes/:name", async (req, res) => {
+  app.put("/api/recipes", async (req, res) => {
     const recipe = await Recipe.findOneAndUpdate(
-      { name: helpers.prettify(req.params.name) },
+      { name: req.body.name },
       req.body,
       { new: true }
     );

@@ -11,7 +11,7 @@ class RecipeEdit extends React.Component {
   }
 
   onSubmit = (formValues, image) => {
-    this.props.editRecipe(formValues, image.name, image);
+    this.props.editRecipe(formValues, image);
   };
 
   render() {
