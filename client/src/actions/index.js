@@ -1,22 +1,25 @@
 import axios from "axios";
 import history from "../history";
 
-export const createRecipe = (formValues, imageName, image) => async (
-  dispatch
-) => {
-  const uploadConfig = await axios.post("/api/upload", {
-    imageFilename: imageName,
-  });
+export const createRecipe = (formValues, image) => async (dispatch) => {
+  let uploadConfig = null;
 
-  await axios.put(uploadConfig.data.url, image, {
-    headers: {
-      "Content-Type": image.type,
-    },
-  });
+  // Only do this if a new image file has been added with the file input field
+  if (image) {
+    uploadConfig = await axios.post("/api/upload", {
+      imageFilename: image.name,
+    });
+
+    await axios.put(uploadConfig.data.url, image, {
+      headers: {
+        "Content-Type": image.type,
+      },
+    });
+  }
 
   const response = await axios.post("/api/recipes", {
     ...formValues,
-    image: uploadConfig.data.key,
+    image: uploadConfig ? uploadConfig.data.key : "placeholder.jpg",
   });
 
   dispatch({ type: "CREATE_RECIPE", payload: response.data });

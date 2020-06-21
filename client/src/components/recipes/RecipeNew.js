@@ -5,7 +5,7 @@ import { createRecipe } from "../../actions";
 
 class RecipeNew extends React.Component {
   onSubmit = (formValues, image) => {
-    this.props.createRecipe(formValues, image.name, image);
+    this.props.createRecipe(formValues, image);
   };
 
   render() {
