@@ -18,7 +18,7 @@
     "clone-deep": "^4.0.1",
     "concurrently": "^4.1.0",
     "express": "^4.17.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "mongoose": "^5.6.0",
     "multer": "^1.4.1",
     "nodemailer": "^6.4.6",
