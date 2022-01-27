@@ -4,7 +4,6 @@ const bodyParser = require("body-parser");
 const keys = require("./config/keys");
 require("./models/Recipe");
 
-mongoose.set("useFindAndModify", false);
 mongoose.connect(keys.mongoURI);
 
 const app = express();
