@@ -4,8 +4,8 @@ import { Router, Route, Switch } from "react-router-dom";
 import history from "../history";
 import { fetchRecipes } from "../actions";
 import ScrollToTop from "./ScrollToTop";
-import SearchModal from "./SearchModal";
-import ShareModal from "./ShareModal";
+// import SearchModal from "./SearchModal";
+// import ShareModal from "./ShareModal";
 import Nav from "./Nav";
 import MealPlan from "./MealPlan";
 import Recipes from "./recipes/Recipes";
@@ -36,8 +36,8 @@ class App extends Component {
               </Switch>
               <Route path="/recipes/edit/:name" exact component={RecipeEdit} />
               <Route path="/grocery-list" exact component={GroceryList} />
-              <SearchModal />
-              <ShareModal />
+              {/* <SearchModal /> */}
+              {/* <ShareModal /> */}
             </div>
           </div>
         </ScrollToTop>
