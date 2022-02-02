@@ -5,6 +5,7 @@ import loadingReducer from "./loadingReducer";
 import mealPlanReducer from "./mealPlanReducer";
 import searchModalReducer from "./searchModalReducer";
 import shareModalReducer from "./shareModalReducer";
+import deleteModalReducer from "./deleteModalReducer";
 import groceryListReducer from "./groceryListReducer";
 
 export default combineReducers({
@@ -13,6 +14,7 @@ export default combineReducers({
   mealPlan: mealPlanReducer,
   searchModal: searchModalReducer,
   shareModal: shareModalReducer,
+  deleteModal: deleteModalReducer,
   groceryList: groceryListReducer,
   form: formReducer,
 });

@@ -103,6 +103,11 @@ export const toggleSearchModal = (arrayIndex) => ({
   payload: arrayIndex,
 });
 
+export const toggleDeleteModal = (arrayIndex) => ({
+  type: "TOGGLE_DELETE_MODAL",
+  payload: arrayIndex,
+});
+
 export const toggleShareModal = () => ({
   type: "TOGGLE_SHARE_MODAL",
 });

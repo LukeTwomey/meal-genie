@@ -6,6 +6,7 @@ import { fetchRecipes } from "../actions";
 import ScrollToTop from "./ScrollToTop";
 // import SearchModal from "./SearchModal";
 // import ShareModal from "./ShareModal";
+import DeleteModal from "./DeleteModal";
 import Nav from "./Nav";
 import MealPlan from "./MealPlan";
 import Recipes from "./recipes/Recipes";
@@ -38,6 +39,7 @@ class App extends Component {
               <Route path="/grocery-list" exact component={GroceryList} />
               {/* <SearchModal /> */}
               {/* <ShareModal /> */}
+              <DeleteModal />
             </div>
           </div>
         </ScrollToTop>

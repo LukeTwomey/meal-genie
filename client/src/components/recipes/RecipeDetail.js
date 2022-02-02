@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { toggleDeleteModal } from "../../actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/pro-regular-svg-icons";
 import { faTrashAlt } from "@fortawesome/pro-solid-svg-icons";
@@ -10,6 +11,7 @@ import "./RecipeDetail.css";
 
 const RecipeDetail = (props) => {
   let recipeUrlName = props.match.params.name;
+  const { toggleDeleteModal } = props;
 
   // Find the recipe that matches the url name
   let recipe = props.recipes.find((o) => {
@@ -44,7 +46,9 @@ const RecipeDetail = (props) => {
             <Link to={`/recipes/edit/${recipeUrlName}`}>
               <FontAwesomeIcon icon={faEdit} className="edit" />
             </Link>
-            <FontAwesomeIcon icon={faTrashAlt} className="deleteButton" />
+            <FontAwesomeIcon icon={faTrashAlt} className="deleteButton" onClick={() => {
+              toggleDeleteModal(99);
+            }}/>
             <p>{recipe.description}</p>
             <p>Rating: {recipe.rating}</p>
             <p>Cooking Time: {recipe.cookingTime}</p>
@@ -68,4 +72,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(RecipeDetail);
+export default connect(mapStateToProps, { toggleDeleteModal })(RecipeDetail);
