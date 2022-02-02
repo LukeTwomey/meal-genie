@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { toggleDeleteModal } from "../actions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/pro-regular-svg-icons";
 import "./DeleteModal.css";
 
 const DeleteModal = ({
@@ -14,6 +16,14 @@ const DeleteModal = ({
       <section className="modal-main">
         <div className="modal-contents">
           <h1>Delete Recipe</h1>
+          <div
+            className="button"
+            onClick={() => {
+              toggleDeleteModal(null);
+            }}
+          >
+            <FontAwesomeIcon icon={faTimes} />
+          </div>
           <p>Are you sure you want to delete this recipe?</p>
           <div
             className="button"
