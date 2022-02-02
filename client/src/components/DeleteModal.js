@@ -5,6 +5,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/pro-regular-svg-icons";
 import "./DeleteModal.css";
 
+const handleSubmit = (e) => {
+  e.preventDefault();
+  console.log("delete recipe");
+}
+
 const DeleteModal = ({
   toggleDeleteModal,
   show
@@ -32,6 +37,19 @@ const DeleteModal = ({
             }}
           >
           </div>
+
+          <form onSubmit={handleSubmit}>
+              <div className="formButtons">
+                <input
+                  type="button"
+                  value="Cancel"
+                  onClick={() => {
+                    toggleDeleteModal(null);
+                  }}
+                />
+                <input type="submit" value="Delete" />
+              </div>
+            </form>
         </div>
       </section>
     </div>
