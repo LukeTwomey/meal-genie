@@ -47,7 +47,7 @@ const RecipeDetail = (props) => {
               <FontAwesomeIcon icon={faEdit} className="edit" />
             </Link>
             <FontAwesomeIcon icon={faTrashAlt} className="deleteButton" onClick={() => {
-              toggleDeleteModal(99);
+              toggleDeleteModal(recipe._id);
             }}/>
             <p>{recipe.description}</p>
             <p>Rating: {recipe.rating}</p>

@@ -1,10 +1,10 @@
-export default (state = { show: false, activeArrayIndex: null }, action) => {
+export default (state = { show: false, activeRecipeId: null }, action) => {
     switch (action.type) {
       case "TOGGLE_DELETE_MODAL":
         return {
           ...state,
           show: !state.show,
-          activeArrayIndex: action.payload,
+          activeRecipeId: action.payload,
         };
       default:
         return state;

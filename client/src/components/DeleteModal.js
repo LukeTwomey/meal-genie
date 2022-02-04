@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { toggleDeleteModal } from "../actions";
+import { toggleDeleteModal, deleteRecipe } from "../actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/pro-regular-svg-icons";
 import "./DeleteModal.css";
@@ -12,7 +12,8 @@ const handleSubmit = (e) => {
 
 const DeleteModal = ({
   toggleDeleteModal,
-  show
+  show,
+  deleteRecipe
 }) => {
   const showHideClassName = show ? "modal display-block" : "modal display-none";
 
@@ -38,18 +39,21 @@ const DeleteModal = ({
           >
           </div>
 
-          <form onSubmit={handleSubmit}>
-              <div className="formButtons">
-                <input
-                  type="button"
-                  value="Cancel"
-                  onClick={() => {
-                    toggleDeleteModal(null);
-                  }}
-                />
-                <input type="submit" value="Delete" />
-              </div>
-            </form>
+          <form onSubmit={(e) => {
+              e.preventDefault();
+              deleteRecipe()
+            }}>
+            <div className="formButtons">
+              <input
+                type="button"
+                value="Cancel"
+                onClick={() => {
+                  toggleDeleteModal(null);
+                }}
+              />
+              <input type="submit" value="Delete" />
+            </div>
+          </form>
         </div>
       </section>
     </div>
@@ -64,5 +68,6 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, {
-  toggleDeleteModal
+  toggleDeleteModal,
+  deleteRecipe
 })(DeleteModal);

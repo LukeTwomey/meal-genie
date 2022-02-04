@@ -59,7 +59,7 @@ module.exports = (app) => {
 
   // Get all recipes from the database
   app.get("/api/recipes", async (req, res) => {
-    const recipes = await Recipe.find();
+    const recipes = await Recipe.find({});
     res.send(recipes);
   });
 
@@ -83,7 +83,8 @@ module.exports = (app) => {
 
   // Delete recipe from the database
   app.delete("/api/recipes/:id", async (req, res) => {
-    console.log("Delete recipe with this id: " + req.params.id);
+    const recipe = await Recipe.deleteOne({ _id: req.params.id });
+    res.send(recipe);
   });
 
   // Add a new recipe to the database

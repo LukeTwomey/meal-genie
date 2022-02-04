@@ -63,9 +63,13 @@ export const editRecipe = (formValues, image) => async (dispatch) => {
   history.push("/recipes");
 };
 
-export const deleteRecipe = (id) => async (dispatch) => {
-  await axios.delete(`/api/recipes/${id}`);
-  dispatch({ type: "DELETE_RECIPE", payload: id });
+export const deleteRecipe = () => async (dispatch, getState) => {
+  const state = getState();
+  const recipeId = state.deleteModal.activeRecipeId;
+  await axios.delete(`/api/recipes/${recipeId}`);
+  dispatch({ type: "DELETE_RECIPE", payload: recipeId });
+  dispatch({ type: "TOGGLE_DELETE_MODAL", payload: null });
+  history.push("/recipes");
 };
 
 export const setLoadingStatus = (boolean) => ({
@@ -103,9 +107,9 @@ export const toggleSearchModal = (arrayIndex) => ({
   payload: arrayIndex,
 });
 
-export const toggleDeleteModal = (arrayIndex) => ({
+export const toggleDeleteModal = (recipeId) => ({
   type: "TOGGLE_DELETE_MODAL",
-  payload: arrayIndex,
+  payload: recipeId,
 });
 
 export const toggleShareModal = () => ({
