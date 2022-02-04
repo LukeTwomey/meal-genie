@@ -9,8 +9,8 @@ export const createRecipe = (formValues, image) => async (dispatch) => {
     uploadConfig = await axios.post("/api/upload", {
       imageFilename: image.name,
     });
-    
-    alert(uploadConfig.data.url); 
+
+    alert(uploadConfig.data); 
 
     await axios.put(uploadConfig.data.url, image, {
       headers: {
