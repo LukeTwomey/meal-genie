@@ -12,7 +12,7 @@ export default [
     validationErrorText: "Please enter a rating",
   },
   {
-    label: "Cooking Time",
+    label: "Cooking Time (mins)",
     name: "cookingTime",
     type: "number",
     validationErrorText: "Please enter a cooking time",
