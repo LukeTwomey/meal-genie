@@ -5,7 +5,7 @@ let currentMealPlan = null;
 let newMealPlan = null;
 let allRecipes = null;
 
-export default (state = initialState, action) => {
+const mealPlanReducer = (state = initialState, action) => {
   switch (action.type) {
     case "PLAN_MEALS":
       allRecipes = Object.values(action.payload);
@@ -51,7 +51,8 @@ export default (state = initialState, action) => {
             newMealPlan.push(recipe);
           }
         });
-        return [...newMealPlan];
+        // return [...newMealPlan];
+        return [];
       }
 
     case "TOGGLE_MEAL_LOCK":
@@ -93,3 +94,5 @@ export default (state = initialState, action) => {
       return state;
   }
 };
+
+export default mealPlanReducer;
