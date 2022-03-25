@@ -36,14 +36,16 @@ const DeleteModal = ({
             onClick={() => {
               toggleDeleteModal(null);
             }}
-          >
-          </div>
+          ></div>
 
-          <form onSubmit={(e) => {
+          <form
+            onSubmit={(e) => {
               e.preventDefault();
-              deleteRecipe()
-            }}>
+              deleteRecipe();
+            }}
+          >
             <div className="formButtons">
+              <input type="submit" value="Delete" />
               <input
                 type="button"
                 value="Cancel"
@@ -51,7 +53,6 @@ const DeleteModal = ({
                   toggleDeleteModal(null);
                 }}
               />
-              <input type="submit" value="Delete" />
             </div>
           </form>
         </div>
