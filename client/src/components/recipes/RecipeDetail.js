@@ -53,7 +53,7 @@ const RecipeDetail = (props) => {
                 toggleDeleteModal(recipe._id);
               }}
             />
-            <p>{recipe.description}</p>
+            <p className="description">{recipe.description}</p>
             <p>Rating: {recipe.rating}</p>
             <p>Cooking Time: {recipe.cookingTime} mins</p>
             <p>Servings: {recipe.servings}</p>

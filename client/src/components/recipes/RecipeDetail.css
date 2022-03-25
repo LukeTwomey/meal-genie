@@ -40,4 +40,12 @@
 
 .deleteButton {
   float: right;
+  margin-left: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.description {
+  margin-bottom: 1em;
+  font-style: italic;
+  font-weight: bold;
 }
