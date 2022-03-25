@@ -51,8 +51,7 @@ const mealPlanReducer = (state = initialState, action) => {
             newMealPlan.push(recipe);
           }
         });
-        // return [...newMealPlan];
-        return [];
+        return [...newMealPlan];
       }
 
     case "TOGGLE_MEAL_LOCK":

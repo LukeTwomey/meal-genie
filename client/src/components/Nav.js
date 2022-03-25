@@ -46,7 +46,7 @@ const Nav = (props) => {
         alt="logo"
         className="logo"
         onClick={() => {
-          audio.play();
+          // audio.play();
           props.planMeals();
         }}
       />
