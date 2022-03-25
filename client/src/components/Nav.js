@@ -50,7 +50,7 @@ const Nav = (props) => {
           props.planMeals();
         }}
       />
-      <NavLink
+      {/* <NavLink
         exact
         to="/grocery-list"
         className="groceryListIcon"
@@ -61,7 +61,7 @@ const Nav = (props) => {
           <FontAwesomeIcon className="solidIcon" icon={faShoppingCartSolid} />
           <p>Grocery List</p>
         </div>
-      </NavLink>
+      </NavLink> */}
     </nav>
   );
 };

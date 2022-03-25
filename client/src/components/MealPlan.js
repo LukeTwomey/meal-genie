@@ -2,14 +2,14 @@ import React from "react";
 import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelopeOpenText } from "@fortawesome/pro-light-svg-icons";
-import { toggleShareModal } from "../actions";
+// import { toggleShareModal } from "../actions";
 import RecipeCard from "./recipes/RecipeCard";
 import Toolbar from "./Toolbar";
 import "./MealPlan.css";
 
 const Landing = (props) => {
   const recipes = props.mealPlan;
-  const { toggleShareModal } = props;
+  // const { toggleShareModal } = props;
   const weekDays = [
     "Monday",
     "Tuesday",
@@ -32,14 +32,14 @@ const Landing = (props) => {
           <RecipeCard recipe={recipe} />
         </div>
       ))}
-      <div
+      {/* <div
         className="shareButton"
         onClick={() => {
           toggleShareModal();
         }}
       >
         <FontAwesomeIcon icon={faEnvelopeOpenText} />
-      </div>
+      </div> */}
     </div>
   );
 };
@@ -50,4 +50,4 @@ const mapStateToProps = (state) => ({
   mealPlan: Object.values(state.mealPlan),
 });
 
-export default connect(mapStateToProps, { toggleShareModal })(Landing);
+export default connect(mapStateToProps)(Landing);

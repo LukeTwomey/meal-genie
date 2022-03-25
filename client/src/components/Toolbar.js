@@ -26,14 +26,14 @@ const Toolbar = (props) => {
           <FontAwesomeIcon icon={faLockAlt} />
         )}
       </div>
-      <div
+      {/* <div
         className="button"
         onClick={() => {
           toggleSearchModal(arrayIndex);
         }}
       >
         <FontAwesomeIcon icon={faSearch} />
-      </div>
+      </div> */}
     </div>
   );
 };
