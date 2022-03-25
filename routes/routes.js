@@ -65,13 +65,9 @@ module.exports = (app) => {
 
   // Fetch single recipe from the database
   app.get("/api/recipes/:name", async (req, res) => {
-    console.log(req.params);
-    console.log(req.params.name);
-    console.log(helpers.prettify(req.params.name));
     const recipe = await Recipe.findOne({
       name: helpers.prettify(req.params.name),
     });
-    console.log(recipe);
     res.send(recipe);
   });
 

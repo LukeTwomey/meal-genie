@@ -17,6 +17,14 @@ export const createRecipe = (formValues, image) => async (dispatch) => {
     });
   }
 
+  const currentNewRecipeName = formValues.name;
+  const prettifiedRecipeName = currentNewRecipeName.replace(
+    /(^\w|\s\w)/g,
+    (m) => m.toUpperCase()
+  );
+
+  formValues.name = prettifiedRecipeName;
+
   const response = await axios.post("/api/recipes", {
     ...formValues,
     image: uploadConfig ? uploadConfig.data.key : "placeholder.jpg",
@@ -53,6 +61,14 @@ export const editRecipe = (id, formValues, image) => async (dispatch) => {
       },
     });
   }
+
+  const currentNewRecipeName = formValues.name;
+  const prettifiedRecipeName = currentNewRecipeName.replace(
+    /(^\w|\s\w)/g,
+    (m) => m.toUpperCase()
+  );
+
+  formValues.name = prettifiedRecipeName;
 
   const response = await axios.put("/api/recipes", {
     id,
