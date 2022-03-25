@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/pro-regular-svg-icons";
 import RecipeCard from "./RecipeCard";
 import Loading from "../Loading/Loading";
+import "./Recipes.css";
 
 class Recipes extends Component {
   getRecipes() {
@@ -22,7 +23,7 @@ class Recipes extends Component {
       return <Loading />;
     } else {
       return (
-        <div>
+        <div className="recipes">
           {recipes.length !== 0 ? this.getRecipes() : null}
           <Link to="/recipes/new">
             <div className="addButton">

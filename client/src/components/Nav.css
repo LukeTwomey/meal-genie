@@ -66,3 +66,14 @@ nav a.selected .solidIcon {
   right: 3.9em;
   width: 70px;
 }
+
+@media screen and (min-width: 800px) {
+  .logo {
+    width: 100px;
+    bottom: 110px;
+  }
+
+  nav a {
+    width: 100px;
+  }
+}

@@ -40,3 +40,33 @@ h1 {
   right: 1em;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 2px 4px 6px rgba(0, 0, 0, 0.23);
 }
+
+@media screen and (min-width: 1400px) {
+  .addButton {
+    right: 150px;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .addButton {
+    right: 250px;
+  }
+}
+
+@media screen and (min-width: 1800px) {
+  .addButton {
+    right: 350px;
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  .addButton {
+    right: 500px;
+  }
+}
+
+@media screen and (min-width: 2300px) {
+  .addButton {
+    right: 600px;
+  }
+}
