@@ -38,7 +38,7 @@ export const fetchRecipe = (name) => async (dispatch) => {
   dispatch({ type: "FETCH_RECIPE", payload: response.data });
 };
 
-export const editRecipe = (formValues, image) => async (dispatch) => {
+export const editRecipe = (id, formValues, image) => async (dispatch) => {
   let uploadConfig = null;
 
   // Only do this if a new image file has been added with the file input field
@@ -55,6 +55,7 @@ export const editRecipe = (formValues, image) => async (dispatch) => {
   }
 
   const response = await axios.put("/api/recipes", {
+    id,
     ...formValues,
     image: uploadConfig ? uploadConfig.data.key : formValues.image,
   });
