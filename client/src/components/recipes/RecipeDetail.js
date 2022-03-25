@@ -40,8 +40,10 @@ const RecipeDetail = (props) => {
         <div className="recipeDetail">
           <div className="imageContainer">
             <RecipeImage image={recipe.image} />
+            <div className="recipeName">
+              <h2>{recipe.name}</h2>
+            </div>
           </div>
-          <h2>{recipe.name}</h2>
           <div className="recipeText">
             <Link to={`/recipes/edit/${recipeUrlName}`}>
               <FontAwesomeIcon icon={faEdit} className="edit" />
