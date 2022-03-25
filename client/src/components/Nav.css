@@ -70,9 +70,13 @@ nav a.selected .solidIcon {
 @media screen and (min-width: 800px) {
   .logo {
     width: 100px;
-    bottom: 110px;
+    bottom: 91px;
   }
 
+  nav {
+    height: 50px;
+  }
+  
   nav a {
     width: 100px;
   }
