@@ -46,12 +46,16 @@ const RecipeDetail = (props) => {
             <Link to={`/recipes/edit/${recipeUrlName}`}>
               <FontAwesomeIcon icon={faEdit} className="edit" />
             </Link>
-            <FontAwesomeIcon icon={faTrashAlt} className="deleteButton" onClick={() => {
-              toggleDeleteModal(recipe._id);
-            }}/>
+            <FontAwesomeIcon
+              icon={faTrashAlt}
+              className="deleteButton"
+              onClick={() => {
+                toggleDeleteModal(recipe._id);
+              }}
+            />
             <p>{recipe.description}</p>
             <p>Rating: {recipe.rating}</p>
-            <p>Cooking Time: {recipe.cookingTime}</p>
+            <p>Cooking Time: {recipe.cookingTime} mins</p>
             <p>Servings: {recipe.servings}</p>
             <p>Syns: {recipe.syns}</p>
             <h3>Ingredients</h3>
