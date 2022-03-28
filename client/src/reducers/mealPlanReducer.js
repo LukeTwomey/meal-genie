@@ -51,7 +51,18 @@ const mealPlanReducer = (state = initialState, action) => {
             newMealPlan.push(recipe);
           }
         });
-        return [...newMealPlan];
+
+        if (newMealPlan.length < 7 && shuffledRecipes.length > 0) {
+          console.log(newMealPlan.length);
+          console.log(shuffledRecipes.length);
+
+          shuffledRecipes.forEach((recipe) => {
+            console.log(recipe);
+            newMealPlan.push(recipe);
+          });
+        }
+
+        return [...newMealPlan.slice(0, 7)];
       }
 
     case "TOGGLE_MEAL_LOCK":
