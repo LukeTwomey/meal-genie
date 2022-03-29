@@ -19,7 +19,7 @@ const DeleteModal = ({
 
   return (
     <div className={showHideClassName}>
-      <section className="modal-main">
+      <section className="delete-modal modal-main">
         <div className="modal-contents">
           <h1>Delete Recipe</h1>
           <div

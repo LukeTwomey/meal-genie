@@ -18,7 +18,7 @@ const SearchModal = ({
 
   return (
     <div className={showHideClassName}>
-      <section className="modal-main">
+      <section className="search-modal modal-main">
         <div className="modal-contents">
           <h1>Select Recipe</h1>
           <div
