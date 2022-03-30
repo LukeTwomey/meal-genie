@@ -4,7 +4,8 @@
   margin-top: 0.8em;
 }
 
-.addNewRecipeForm input {
+.addNewRecipeForm input,
+.addNewRecipeForm textarea {
   display: block;
   margin: 0;
 }

@@ -80,7 +80,9 @@ class RecipeForm extends Component {
         }`;
         return (
           <div className={textAreaClassName}>
-            <label>{`${label} ${index + 1}`}</label>
+            <label>{`${label} ${
+              typeof index == "number" ? index + 1 : ""
+            }`}</label>
             <textarea rows="5" {...input} />
             {this.renderError(meta)}
           </div>
@@ -150,6 +152,7 @@ class RecipeForm extends Component {
       ({ name, label, type, arrayFields, buttonText }, i) => {
         switch (type) {
           case "text":
+          case "textarea":
           case "number":
             return (
               <Field

@@ -26,7 +26,7 @@ export default [
   {
     label: "Description",
     name: "description",
-    type: "text",
+    type: "textarea",
     validationErrorText: "Please enter a description",
   },
   {
