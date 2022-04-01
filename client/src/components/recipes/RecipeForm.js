@@ -283,7 +283,16 @@ const validate = (formValues) => {
   return errors;
 };
 
+const scrollToFirstError = () => {
+  const el = document.querySelector(".error");
+  const position =
+    el.getBoundingClientRect().top + document.documentElement.scrollTop;
+  const offset = +35;
+  window.scrollTo({ top: position - offset, behavior: "smooth" });
+};
+
 export default reduxForm({
   form: "recipeForm",
   validate,
+  onSubmitFail: scrollToFirstError,
 })(RecipeForm);
