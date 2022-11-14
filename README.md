@@ -10,19 +10,6 @@ $ npm install
 
 ### Configuration
 
-In order to integrate with Font Awesome Pro, you will need to duplicate the .npmrc.sample file in the root of the project, and name it as follows:
-
-```sh
-.npmrc
-```
-
-Open that file and replace "FONT-AWESOME-AUTH-TOKEN-GOES-HERE" with the actual Font Awesome Pro auth token. This can be found by logging into the Font Awesome account and going to settings. The contents of .npmrc should look something like:
-
-```sh
-@fortawesome:registry=https://npm.fontawesome.com/
-//npm.fontawesome.com/:_authToken=XXXXXXXX-YYYY-ZZZZ-AAAA-BBBBBBBBBBBB
-```
-
 In order to successfully connect to the remote MongoDB, you will need to duplicate the config/dev.js.example file (still within the config folder), and name it as follows:
 
 ```sh
@@ -33,7 +20,7 @@ Open that file and replace "password" with the password of the admin account wit
 
 ```sh
 module.exports = {
-    mongoURI: 'mongodb+srv://admin:x92hgurtcslg58ch@cluster0-pvd0l.mongodb.net/meal-genie-development?retryWrites=true&w=majority'
+    mongoURI: "mongodb+srv://admin:password@cluster0-pvd0l.mongodb.net/heroku_xg884p0t?retryWrites=true&w=majority",
 }
 ```
 
@@ -71,17 +58,4 @@ __v: 0
 
 ### Deploying to production
 
-Navigate to your web host (in this case Heroku) and create a new app.
-Run the following, replacing \<project-name> with the name of your app E.G. todo-list or music-player
-
-```sh
-$ heroku git:remote -a <project-name>
-```
-
-Make sure all the latest code has been committed to git, then push to Heroku
-
-```sh
-$ git add .
-$ git commit -m "<commit message here>"
-$ git push heroku master
-```
+Committing to GitHub will automatically deploy a new build to production - in the Railway app
