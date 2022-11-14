@@ -13,7 +13,6 @@ app.use(bodyParser.json());
 require("./routes/routes")(app);
 
 if (process.env.NODE_ENV === "production") {
-  console.log("node env is production.");
   app.use(express.static("client/build"));
 
   const path = require("path");
