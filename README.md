@@ -56,6 +56,6 @@ name: "luke"
 __v: 0
 ```
 
-### Deploying to production
+### Feature Development
 
-Committing to GitHub will automatically deploy a new build to production - in the Railway app
+Create a branch for all new features. By committing to this branch and creating a PR in GitHub, a short-lived environment will be created in Railway to view and test your changes. Merging the PR will be picked up by Railway and a new build will be created and deployed to both the "Production"/"Portfolio" environment, and the "Staging"/"Home" enironment.
